@@ -3,6 +3,8 @@
 Created on Wed July 13 2016
 
 @author: fangren
+
+contributed by T Williams
 """
 
 
