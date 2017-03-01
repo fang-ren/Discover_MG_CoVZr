@@ -35,8 +35,10 @@ data2 = np.genfromtxt(filename2, delimiter=',', skip_header = 1)
 data3 = np.genfromtxt(filename3, delimiter=',', skip_header = 1)
 
 data = np.concatenate((data1[:, :58], data2[:, :58], data3[:, :58]))
+# data = np.concatenate((data1[:, :58], data3[:, :58]))
+
 ROI1 = data[:, 15]
-keep = ROI1>(np.median(ROI1)/10)
+keep = ROI1>(np.median(ROI1)/5)
 data = data[keep,:]
 
 ROI1 = data[:, 15]
@@ -56,7 +58,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
 ternary_data = np.concatenate(([Fe],[Nb],[Ti],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
@@ -107,7 +109,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_neighborhood_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
 
 # interpolation
@@ -149,7 +151,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_interpolated_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []
