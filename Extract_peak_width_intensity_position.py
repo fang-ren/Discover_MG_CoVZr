@@ -21,14 +21,14 @@ def read_data(total_num_scan, index, basefile_paths):
     peak_position = []
     peak_intensity = []
     peak_width = []
-    for basefile_path in basefile_paths:    
+    for basefile_path in basefile_paths:
         while (index <= total_num_scan):
-            print 'processing', basefile_path + file_index(index) + 'bckgrd_subtracted_peak_analysis_Voigt.csv'  
+            print 'processing', basefile_path + file_index(index) + 'bckgrd_subtracted_peak_analysis_Voigt.csv'
             file_name = basefile_path + file_index(index) + 'bckgrd_subtracted_peak_analysis_Voigt.csv'
             peak_info = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
             peak_position.append(peak_info[1][0])
             peak_intensity.append(peak_info[1][1])
-            peak_width.append(peak_info[1][2])                
+            peak_width.append(peak_info[1][2])
             index += 1
         index = 1
     return peak_position, peak_intensity, peak_width
