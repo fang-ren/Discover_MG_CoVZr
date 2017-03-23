@@ -22,9 +22,9 @@ plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\FeNbTi\\masterfiles\\'
 save_path = path + 'plots\\'
 
-basename1 = 'SampleB2_19_master_metadata.csv'
-basename2 = 'SampleB2_20_master_metadata.csv'
-basename3 = 'SampleB2_21_master_metadata.csv'
+basename1 = 'CLEANED_SampleB2_19_master_metadata.csv'
+basename2 = 'CLEANED_SampleB2_20_master_metadata.csv'
+basename3 = 'CLEANED_SampleB2_21_master_metadata.csv'
 
 filename1 = path + basename1
 filename2 = path + basename2
@@ -34,17 +34,13 @@ data1 = np.genfromtxt(filename1, delimiter=',', skip_header = 1)
 data2 = np.genfromtxt(filename2, delimiter=',', skip_header = 1)
 data3 = np.genfromtxt(filename3, delimiter=',', skip_header = 1)
 
-data = np.concatenate((data1[:, :58], data2[:, :58], data3[:, :58]))
+data = np.concatenate((data1, data2, data3))
 # data = np.concatenate((data1[:, :58], data3[:, :58]))
 
 ROI1 = data[:, 15]
-keep = ROI1>(np.median(ROI1)/5)
-data = data[keep,:]
-
-ROI1 = data[:, 15]
-Fe = data[:,55]*100
-Nb = data[:,56]*100
-Ti = data[:,57]*100
+Fe = data[:,58]*100
+Nb = data[:,59]*100
+Ti = data[:,60]*100
 peak_position = data[:,52]
 peak_width = data[:,53]
 peak_intensity = data[:,54]
@@ -53,35 +49,35 @@ peak_intensity = data[:,54]
 peak_width_neighborhood = np.copy(peak_width)
 
 
-ternary_data = np.concatenate(([Fe],[Nb],[Ti],[peak_width]), axis = 0)
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_low',
                        cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
-ternary_data = np.concatenate(([Fe],[Nb],[Ti],[peak_position]), axis = 0)
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_position_low',
                        cbl='Scale', vmin = 2.68, vmax = 3.05, cmap='viridis', cb=True, style='h')
 
 
-ternary_data = np.concatenate(([Fe],[Nb],[Ti],[[1]*len(Fe)]), axis = 0)
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[[1]*len(Fe)]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='black_low',
                        cbl='Scale', cmap='gray', cb=True, style='h')
 
 
 
 
-ternary_data = np.concatenate(([Fe],[Nb],[Ti],[ROI1]), axis = 0)
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[ROI1]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='ROI1',
                        cbl='Scale', cmap='viridis', cb=True, style='h')
 
@@ -104,10 +100,10 @@ for i in range(len(Fe)):
             continue
 
 
-ternary_data = np.concatenate(([Fe],[Nb],[Ti],[peak_width_neighborhood]), axis = 0)
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width_neighborhood]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_neighborhood_low',
                        cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
@@ -115,8 +111,8 @@ plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','
 # interpolation
 peak_width_func = interpolate.Rbf(Fe, Nb, Ti, peak_width_neighborhood, function='multiquadric', smooth=0.3)
 
-Fe_range = np.arange(7.5, 81.7, 1)
-Nb_range = np.arange(8.7, 76.5, 1)
+Fe_range = np.arange(5.8, 84.7, 1)
+Nb_range = np.arange(7.3, 78.9, 1)
 
 
 Fe_new = []
@@ -127,7 +123,7 @@ peak_width_new = []
 
 for i in Fe_range:
     for j in Nb_range:
-        if i + j <= 91.5 and i+j >= 29.5:
+        if i + j <= 93.5 and i+j >= 23.7:
             try:
                 Fe_new.append(i)
                 Nb_new.append(j)
@@ -146,12 +142,12 @@ print peak_width.max(), peak_width.min()
 print peak_width_new.max(), peak_width_new.min()
 
 
-ternary_data = np.concatenate(([Fe_new],[Nb_new],[Ti_new],[peak_width_new]), axis = 0)
+ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[peak_width_new]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_interpolated_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
+                       cbl='Scale', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []
@@ -165,10 +161,10 @@ for pw in peak_width_new:
     labels.append(label)
 
 
-ternary_data = np.concatenate(([Fe_new],[Nb_new],[Ti_new],[labels]), axis = 0)
+ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Nb','Ti'), scale=100,
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='glass_or_crystal_low',
                        cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 

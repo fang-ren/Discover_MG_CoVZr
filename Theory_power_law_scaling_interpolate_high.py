@@ -28,14 +28,6 @@ basename1 = 'CLEANED_Sample8_master_metadata_high_WDS_Travis.csv'
 basename2 = 'CLEANED_Sample14_master_metadata_high.csv'
 basename3 = 'CLEANED_Sample17_master_metadata_high_WDS.csv'
 
-#
-# # low power
-# path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\low\\'
-#
-# basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
-# basename2 = 'CLEANED_Sample10_master_metadata_low.csv'
-# basename3 = 'CLEANED_Sample18_master_metadata_low.csv'
-
 
 ##
 save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
@@ -108,34 +100,10 @@ peak_position_func = interpolate.Rbf(Co, V, Zr, peak_position, function='multiqu
 peak_width_func = interpolate.Rbf(Co, V, Zr, peak_width_neighborhood, function='multiquadric', smooth=0.3)
 
 
-# # high power
-# Co_range = np.arange(4.4, 82.4, 1)
-# V_range = np.arange(8, 80.0, 1)
-#
-#
-# Co_new = []
-# V_new = []
-# Zr_new = []
-#
-# peak_position_new = []
-# peak_width_new = []
-#
-# for i in Co_range:
-#     for j in V_range:
-#         if i + j <= 92.3 and i+j >= 24.4:
-#             try:
-#                 Co_new.append(i)
-#                 V_new.append(j)
-#                 Zr_new.append(100-i-j)
-#                 peak_position_new.append(float(peak_position_func(i, j, (100-i-j))))
-#                 peak_width_new.append(float(peak_width_func(i, j, (100-i-j))))
-#             except(ValueError):
-#                 continue
+# high power
+Co_range = np.arange(4.4, 82.4, 1)
+V_range = np.arange(8, 80.0, 1)
 
-
-# low power
-Co_range = np.arange(7.5, 81.7, 1)
-V_range = np.arange(8.7, 76.5, 1)
 
 Co_new = []
 V_new = []
@@ -146,15 +114,17 @@ peak_width_new = []
 
 for i in Co_range:
     for j in V_range:
-        if i + j <= 91.5 and i+j >= 29.5:
+        if i + j <= 92.3 and i+j >= 24.4:
             try:
                 Co_new.append(i)
                 V_new.append(j)
                 Zr_new.append(100-i-j)
                 peak_position_new.append(float(peak_position_func(i, j, (100-i-j))))
-                peak_width_new.append(float(peak_width_func(i, j, (100 - i - j))))
+                peak_width_new.append(float(peak_width_func(i, j, (100-i-j))))
             except(ValueError):
                 continue
+
+
 
 #####################################
 
@@ -234,7 +204,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[quasicrystals]), axis 
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='quasicrystals',
+                       sv=True, svpth=save_path, svflnm='quasicrystals_high',
                        cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 # np.savetxt(save_path+'quasicrystals.csv', ternary_data, delimiter=',')

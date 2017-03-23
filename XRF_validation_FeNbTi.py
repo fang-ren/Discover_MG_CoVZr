@@ -18,9 +18,9 @@ plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\FeNbTi\\masterfiles\\'
 save_path = path + 'plots\\'
 
-basename1 = 'SampleB2_19_master_metadata.csv'
-basename2 = 'SampleB2_20_master_metadata.csv'
-basename3 = 'SampleB2_21_master_metadata.csv'
+basename1 = 'CLEANED_SampleB2_19_master_metadata.csv'
+basename2 = 'CLEANED_SampleB2_20_master_metadata.csv'
+basename3 = 'CLEANED_SampleB2_21_master_metadata.csv'
 
 filename1 = path + basename1
 filename2 = path + basename2
@@ -32,11 +32,6 @@ data3 = np.genfromtxt(filename3, delimiter=',', skip_header = 1)
 
 data = np.concatenate((data1, data2, data3))
 
-ROI1 = data[:, 15]
-keep = ROI1>(np.median(ROI1)/5)
-data = data[keep,:]
-
-
 
 plate_y = data[:,1]
 plate_x = data[:,2]
@@ -46,9 +41,9 @@ ROI3 = data[:,17]
 ROI4 = data[:,18]
 ROI5 = data[:,19]
 ROI6 = data[:,20]
-Fe = data[:,55] * 100
-Nb = data[:,56] * 100
-Ti = data[:,57] * 100
+Fe = data[:,58] * 100
+Nb = data[:,59] * 100
+Ti = data[:,60] * 100
 Ti_alpha = data[:,61]
 Ti_beta = data[:, 62]
 Fe_alpha = data[:, 63]

@@ -24,13 +24,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import imp
 
-path = path = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\Theory\\'
+path = path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-Co_range = np.arange(0.044, 0.824, 0.01)
-V_range = np.arange(0.08, 0.80, 0.01)
+Co_range = np.arange(0, 1, 0.01)
+V_range = np.arange(0, 1, 0.01)
 
 
 Co_c = []
@@ -40,7 +40,7 @@ Zr_c = []
 
 for i in Co_range:
     for j in V_range:
-        if i + j <= 0.923 and i+j >= 0.244:
+        if i + j <= 1 and i+j >= 0:
             try:
                 Co_c.append(i)
                 V_c.append(j)
@@ -131,9 +131,13 @@ glass_formation = (OMEGA < 1) * (OMEGA >0) * (delta >= 0.05) * (delta <= 0.18)
 ternary_data = np.concatenate(([Co],[V],[Zr],[glass_formation]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                       sv=True, svpth=path, svflnm='glass_formation',
+#                       cbl='Scale', vmax = 1.8, vmin = -1.2, cmap='viridis_r', cb=True, style='h')
+
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                       sv=True, svpth=path, svflnm='glass_formation',
-                      cbl='Scale', vmax = 1.8, vmin = -1.2, cmap='viridis_r', cb=True, style='h')
+                      cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 np.savetxt(path+'thermodynamic.csv', ternary_data, delimiter=',')
 
