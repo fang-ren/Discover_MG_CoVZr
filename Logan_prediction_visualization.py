@@ -25,19 +25,19 @@ alloy = 'Co VZr'
 filename_new = path + 'new-glasses_' + alloy + '.csv'
 data_new = np.genfromtxt(filename_new, delimiter=',', skip_header = 1)
 
-metal1_new = data_new[:,3]*100
-metal2_new = data_new[:,4]*100
-metal3_new = data_new[:,5]*100
-probability_new = data_new[:, 1]
+metal1_new = data_new[:,0]*100
+metal2_new = data_new[:,1]*100
+metal3_new = data_new[:,2]*100
+probability_new = data_new[:, 4]
 
 
 filename_old = path + 'old-model_' + alloy + '.csv'
 data_old = np.genfromtxt(filename_old, delimiter=',', skip_header = 1)
 
-metal1_old = data_old[:,3]*100
-metal2_old = data_old[:,4]*100
-metal3_old = data_old[:,5]*100
-probability_old = data_old[:, 1]
+metal1_old = data_old[:,0]*100
+metal2_old = data_old[:,1]*100
+metal3_old = data_old[:,2]*100
+probability_old = data_old[:, 4]
 
 if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (metal3_new == metal3_old).all():
     ternary_data = np.concatenate(([metal1_old],[metal2_old],[metal3_old],[probability_old]), axis = 0)
@@ -45,7 +45,7 @@ if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (me
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm= alloy + '_old_model.png',
-                           cbl='Scale', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Scale', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
     ternary_data = np.concatenate(([metal1_old],[metal2_old],[metal3_old],[probability_new]), axis = 0)
     ternary_data = np.transpose(ternary_data)
@@ -91,7 +91,7 @@ if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (me
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm=alloy + '_interpolate_old_model.png',
-                           cbl='Scale', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Scale', vmin = 0.3, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
     ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new]), axis = 0)
     ternary_data = np.transpose(ternary_data)
