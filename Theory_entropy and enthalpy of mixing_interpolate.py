@@ -84,7 +84,7 @@ OMEGA = Tm * entropy_of_mixing / np.abs(enthalpy_of_mixing) / 1000.0
 # calculating from equation (6)
 r_Co = 1.25
 r_V = 1.34
-r_Zr = 1.6
+r_Zr = 1.58
 
 r_mean = r_Co * Co_c + r_V * V_c + r_Zr * Zr_c
 
