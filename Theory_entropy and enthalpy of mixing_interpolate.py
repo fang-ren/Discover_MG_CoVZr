@@ -88,7 +88,7 @@ r_Zr = 1.58
 
 r_mean = r_Co * Co_c + r_V * V_c + r_Zr * Zr_c
 
-delta = np.sqrt(Co_c*(1-r_Co/r_mean)**2 + V_c*(1-r_V/r_mean)**2 + V_c*(1-r_V/r_mean)**2)
+delta = np.sqrt(Co_c*(1-r_Co/r_mean)**2 + V_c*(1-r_V/r_mean)**2 + Zr_c*(1-r_Zr/r_mean)**2)
 
 
 glass_formation = (OMEGA < 1) * (OMEGA >0) * (delta >= 0.05) * (delta <= 0.18)

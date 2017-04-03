@@ -41,14 +41,14 @@ def file_index(index):
     elif len(str(index)) == 4:
         return str(index)
 
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\FeNbTi\\ID\\backgrd_subtracted_1D\\'
-save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\FeNbTi\\ID\\Peak_fitting_GLS\\'
-base_name = 'SampleB2_21_24x24_t30_'
+path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\1Dfiles\\high_power_15\\backgrd_subtracted_1D_batch\\'
+save_path = path + 'Peak_fitting_GLS\\'
+base_name = 'Sample15_7thick_24x24_t30_'
 
 # parameters for 21
-guess = [ 2.8, 5000, 0.33, 0.5, 3.4, 23, 0.15, 0.5]
-high = [3.4, 10000, 1, 1, 3.5, 30, 0.2, 1]
-low = [2.1, 0, 0, 0, 3.3, 10, 0.1, 0]
+guess = [2.8, 5000, 0.33, 0.5, 3.7, 23, 0.15, 0.5]
+high = [3.4, 10000, 1, 1, 3.9, 200, 0.2, 1]
+low = [2.1, 0, 0, 0, 3.7, 10, 0.1, 0]
 
 # # parameters for 19, 20
 # guess = [3.9, 100, 0.3, 0.5, 2.8, 5000, 0.33, 0.5]

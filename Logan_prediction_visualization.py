@@ -19,7 +19,7 @@ path = 'C:\Research_FangRen\Data\Metallic_glasses_data\CoVZr_ternary\Logan_predi
 save_path = path + 'plots\\'
 
 
-alloy = 'Co VZr'
+alloy = 'FeTiNb'
 
 
 filename_new = path + 'new-glasses_' + alloy + '.csv'

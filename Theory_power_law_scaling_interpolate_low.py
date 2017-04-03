@@ -151,15 +151,22 @@ Co = Co_c * 100
 V = V_c * 100
 Zr = Zr_c * 100
 
-# # calculatin is shown in a separate word file
+
+"""
+Element, Atomic weight, mass density, atomic number density, atom volume
+Co 58.933, 8.86-8.9, 0.0905-0.0909, 11.05-11.00
+V 50.9415, 5.5-6.0, 0.0650-0.0709, 15.38-14.10
+Zr 91.224, 5.8-6.52, 0.0383-0.0430, 26.11-23.26
+"""
+
 # Co_volume = 11.025
 # V_volume = 14.74
 # Zr_volume = 24.66
 
-f = 1
-Co_volume = 11.05*f
-V_volume = 15.38*f
-Zr_volume = 26.11*f
+# using liquid density of the alloys
+Co_volume = 11.05
+V_volume = 15.38
+Zr_volume = 26.11
 
 atomic_volume = Co_c * Co_volume + V_c * V_volume + Zr_c * Zr_volume
 
