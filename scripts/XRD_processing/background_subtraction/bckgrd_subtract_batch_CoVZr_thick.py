@@ -60,8 +60,8 @@ def object_func(*params):
 
 
 # set folder and save path
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\1Dfiles\\high_power_15'
-save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\1Dfiles\\high_power_15\\backgrd_subtracted_1D'
+path = '..//..//..//data//1D_spectra//raw_1D//Sample15//'
+save_path = '..//..//..//data//1D_spectra//background_subtracted//Sample15//'
 basename = 'Sample15_7thick_24x24_t30_'
 
 index = 1
