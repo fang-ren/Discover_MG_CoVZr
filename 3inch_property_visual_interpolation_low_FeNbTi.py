@@ -54,32 +54,32 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
 ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_position_low',
-                       cbl='Scale', vmin = 2.68, vmax = 3.05, cmap='viridis', cb=True, style='h')
+                       cbl='Peak position', vmin = 2.68, vmax = 3.05, cmap='viridis', cb=True, style='h')
 
 
-ternary_data = np.concatenate(([Fe],[Ti],[Nb],[[1]*len(Fe)]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-                       sv=True, svpth=save_path, svflnm='black_low',
-                       cbl='Scale', cmap='gray', cb=True, style='h')
-
-
+# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[[1]*len(Fe)]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='black_low',
+#                        cbl='Scale', cmap='gray', cb=True, style='h')
 
 
-ternary_data = np.concatenate(([Fe],[Ti],[Nb],[ROI1]), axis = 0)
-ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-                       sv=True, svpth=save_path, svflnm='ROI1',
-                       cbl='Scale', cmap='viridis', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[ROI1]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='ROI1',
+#                        cbl='Scale', cmap='viridis', cb=True, style='h')
 
 
 # neighborhood voting
@@ -105,7 +105,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_neighborhood_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
 
 
 # interpolation
@@ -147,7 +147,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='peak_width_interpolated_low',
-                       cbl='Scale', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []

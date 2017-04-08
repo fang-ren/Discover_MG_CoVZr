@@ -8,7 +8,7 @@ author: Fang Ren (SSRL)
 import numpy as np
 import imp
 
-plotTernary = imp.load_source("plt_ternary_save", "plotTernary_Kevin.py")
+plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
 
@@ -55,9 +55,10 @@ for Zr in Zr_range:
             Zr_list.append(Zr)
             V_list.append(V)
             Co_list.append(Co)
-            if Zr >= Zr_corner[0]*V + Zr_corner[1] or Zr >= V_corner[0]*V + V_corner[1] or Zr < Co_corner[0]*V + Co_corner[1]:
-                label.append(5)
-            else:
+            # if Zr >= Zr_corner[0]*V + Zr_corner[1] or Zr >= V_corner[0]*V + V_corner[1] or Zr < Co_corner[0]*V + Co_corner[1]:
+            #     label.append(5)
+            # else:
+            if True:
                 if V > 7.1 and Co >= 8.3:
                     if plus1[0]*V + plus1[1] >= Zr and negative1[0]*V + negative1[1] <= Zr:
                         label.append(1)

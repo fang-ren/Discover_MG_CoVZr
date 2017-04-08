@@ -19,7 +19,7 @@ path = 'C:\Research_FangRen\Data\Metallic_glasses_data\CoVZr_ternary\Logan_predi
 save_path = path + 'plots\\'
 
 
-alloy = 'FeTiNb'
+alloy = 'Co VZr'
 
 
 filename_new = path + 'new-glasses_' + alloy + '.csv'
@@ -39,26 +39,27 @@ metal2_old = data_old[:,1]*100
 metal3_old = data_old[:,2]*100
 probability_old = data_old[:, 4]
 
-if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (metal3_new == metal3_old).all():
+# if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (metal3_new == metal3_old).all():
+if True:
     ternary_data = np.concatenate(([metal1_old],[metal2_old],[metal3_old],[probability_old]), axis = 0)
     ternary_data = np.transpose(ternary_data)
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm= alloy + '_old_model.png',
-                           cbl='Scale', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
-    ternary_data = np.concatenate(([metal1_old],[metal2_old],[metal3_old],[probability_new]), axis = 0)
+    ternary_data = np.concatenate(([metal1_new],[metal2_new],[metal3_new],[probability_new]), axis = 0)
     ternary_data = np.transpose(ternary_data)
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm= alloy + '_new_model.png',
-                           cbl='Scale', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
 
     # interpolation
     probability_func_old = interpolate.Rbf(metal1_old, metal2_old, metal3_old, probability_old, function='multiquadric',
                                            smooth=0.3)
-    probability_func_new = interpolate.Rbf(metal1_old, metal2_old, metal3_old, probability_new, function='multiquadric',
+    probability_func_new = interpolate.Rbf(metal1_new, metal2_new, metal3_new, probability_new, function='multiquadric',
                                            smooth=0.3)
 
 
@@ -91,23 +92,23 @@ if (metal1_new == metal1_old).all() and (metal2_new == metal2_old).all() and (me
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm=alloy + '_interpolate_old_model.png',
-                           cbl='Scale', vmin = 0.3, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
     ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new]), axis = 0)
     ternary_data = np.transpose(ternary_data)
 
     plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                            sv=True, svpth=save_path, svflnm=alloy + '_interpolate_new_model.png',
-                           cbl='Scale', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                           cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
-    probability_interpolate_new = np.array(probability_interpolate_new)
-    probability_interpolate_old = np.array(probability_interpolate_old)
-    ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
-    ternary_data = np.transpose(ternary_data)
-
-    plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-                           sv=True, svpth=save_path, svflnm=alloy + '_interpolate_difference.png',
-                           cbl='Scale', cmap='viridis_r', cb=True, style='h')
+    # probability_interpolate_new = np.array(probability_interpolate_new)
+    # probability_interpolate_old = np.array(probability_interpolate_old)
+    # ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
+    # ternary_data = np.transpose(ternary_data)
+    #
+    # plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
+    #                        sv=True, svpth=save_path, svflnm=alloy + '_interpolate_difference.png',
+    #                        cbl='Probability difference', cmap='viridis_r', cb=True, style='h')
 
     plt.close("all")
 

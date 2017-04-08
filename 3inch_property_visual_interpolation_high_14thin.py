@@ -29,12 +29,12 @@ filename1 = path + basename1
 filename2 = path + basename2
 
 
-data = np.genfromtxt(filename1, delimiter=',', skip_header = 1)
+data = np.genfromtxt(filename2, delimiter=',', skip_header = 1)
 
 
-Co = data[:,57]
-V = data[:,58]
-Zr = data[:,59]
+Co = data[:,57]*100
+V = data[:,58]*100
+Zr = data[:,59]*100
 peak_position = data[:,60]
 peak_width = data[:,61]
 peak_intensity = data[:,62]
@@ -45,33 +45,33 @@ ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_thick',
+                       sv=True, svpth=save_path, svflnm='peak_width_thin',
                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_position_thick',
+                       sv=True, svpth=save_path, svflnm='peak_position_thin',
                        cbl='Scale', vmin = 2.51, vmax = 3.14, cmap='viridis', cb=True, style='h')
 
-
-# neighborhood voting
-neighborhood_window = 1
-
-
-for i in range(len(Co)):
-    for j in range(len(Co)):
-        if abs(Co[i]-Co[j]) < neighborhood_window\
-        and abs(V[i]-V[j]) < neighborhood_window\
-        and abs(Zr[i]-Zr[j]) < neighborhood_window:
-            peak_width_ave = np.average([peak_width[i], peak_width[j]])
-            peak_width_min = np.min([peak_width[i], peak_width[j]])
-            peak_width_max = np.max([peak_width[i], peak_width[j]])
-            peak_width_neighborhood[i] = peak_width_max
-            peak_width_neighborhood[j] = peak_width_max
-        else:
-            continue
+#
+# # neighborhood voting
+# neighborhood_window = 1
+#
+#
+# for i in range(len(Co)):
+#     for j in range(len(Co)):
+#         if abs(Co[i]-Co[j]) < neighborhood_window\
+#         and abs(V[i]-V[j]) < neighborhood_window\
+#         and abs(Zr[i]-Zr[j]) < neighborhood_window:
+#             peak_width_ave = np.average([peak_width[i], peak_width[j]])
+#             peak_width_min = np.min([peak_width[i], peak_width[j]])
+#             peak_width_max = np.max([peak_width[i], peak_width[j]])
+#             peak_width_neighborhood[i] = peak_width_max
+#             peak_width_neighborhood[j] = peak_width_max
+#         else:
+#             continue
 #
 #
 # ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width_neighborhood]), axis = 0)
@@ -91,8 +91,8 @@ def line(V1, Zr1, V2, Zr2):
     b = Zr1-a*V1
     return a, b
 
-left = line(9.0,9.0,20.0,50.0)
-right = line(9.0,9.0,50.0,20.0)
+left = line(8.0,8.0,20.0,50.0)
+right = line(8.0,8.0,50.0,20.0)
 bottom = line(30.0, 50.0, 50.0, 30.0)
 
 
@@ -139,10 +139,10 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_interpolated_thick',
+                       sv=True, svpth=save_path, svflnm='peak_width_interpolated_thin',
                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
-
+#
 labels = []
 for pw in peak_width_new:
     if pw < 0.16:
@@ -158,28 +158,28 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='glass_or_crystal_thick',
+                       sv=True, svpth=save_path, svflnm='glass_or_crystal_thin',
                        cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 #
 #
 # # plt.close('all')
-# #
 #
-# # labels = []
-# # for pw in peak_width:
-# #     if pw < 0.16:
-# #         label = 0
-# #     elif pw > 0.57:
-# #         label = 1
-# #     else:
-# #         label = 0.5
-# #     labels.append(label)
-# #
-# #
-# # save_path_2 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\Theory\\'
-# # data = np.concatenate(([Co], [V], [Zr], [peak_width], [labels]))
-# # np.savetxt(save_path_2+'peak_width_high.csv', data.T, delimiter=',')
+
+# labels = []
+# for pw in peak_width:
+#     if pw < 0.16:
+#         label = 0
+#     elif pw > 0.57:
+#         label = 1
+#     else:
+#         label = 0.5
+#     labels.append(label)
 #
 #
-# print peak_position.max(), peak_position.min()
-# print peak_width.max(), peak_width.min()
+# save_path_2 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\Theory\\'
+# data = np.concatenate(([Co], [V], [Zr], [peak_width], [labels]))
+# np.savetxt(save_path_2+'peak_width_high.csv', data.T, delimiter=',')
+
+
+print peak_position.max(), peak_position.min()
+print peak_width.max(), peak_width.min()

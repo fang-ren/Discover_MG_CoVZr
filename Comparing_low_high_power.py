@@ -15,10 +15,10 @@ from scipy import interpolate
 
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
-save_path = 'C:\Research_FangRen\Data\July2016\CoVZr_ternary\masterfiles\\'
+save_path = 'C:\Research_FangRen\Data\Metallic_glasses_data\CoVZr_ternary\masterfiles\\'
 
 # high power data
-path_high = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\masterfiles\\high\\'
+path_high = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\high\\'
 
 basename1 = 'CLEANED_Sample8_master_metadata_high_WDS_Travis.csv'
 basename2 = 'CLEANED_Sample14_master_metadata_high.csv'
@@ -55,7 +55,7 @@ for i in range(len(Co_high)):
 
 
 # low power data
-path_low = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\masterfiles\\low\\'
+path_low = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\low\\'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
 basename2 = 'CLEANED_Sample10_master_metadata_low.csv'
@@ -144,7 +144,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='wid_difference',
-                       cbl='Scale', vmax = 0.27, vmin = 0, cmap='viridis', cb=True, style='h')
+                       cbl='FWHM(low-power) - FWHM(high-power)', vmax = 0.27, vmin = 0, cmap='viridis', cb=True, style='h')
 
 print peak_width_new_high.max(), peak_width_new_high.min()
 print peak_width_new_low.max(), peak_width_new_low.min()
