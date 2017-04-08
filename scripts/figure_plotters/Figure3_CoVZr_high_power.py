@@ -19,10 +19,10 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = 'C:\\Research_FangRen\\Data\\metallic_glasses_data\\CoVZr_ternary\\masterfiles\\high\\'
-save_path = path + 'plots\\'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
 
-basename1 = 'CLEANED_Sample8_master_metadata_high_WDS_Travis.csv'
+basename1 = 'CLEANED_Sample8_master_metadata_high_WDS.csv'
 basename2 = 'CLEANED_Sample14_master_metadata_high.csv'
 basename3 = 'CLEANED_Sample17_master_metadata_high_WDS.csv'
 
@@ -49,14 +49,14 @@ ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_high',
+                       sv=True, svpth=save_path, svflnm='FigureS2c',
                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_position_high',
+                       sv=True, svpth=save_path, svflnm='FigureS2a',
                        cbl='Peak position', vmin = 2.49, vmax = 3.14, cmap='viridis', cb=True, style='h')
 
 # ternary_data = np.concatenate(([Co],[V],[Zr],[[1]*len(Co)]), axis = 0)
@@ -83,14 +83,6 @@ for i in range(len(Co)):
             peak_width_neighborhood[j] = peak_width_max
         else:
             continue
-
-
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width_neighborhood]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_neighborhood_high',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
 # interpolation
@@ -134,7 +126,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_interpolated_high',
+                       sv=True, svpth=save_path, svflnm='Figure3a',
                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
@@ -153,7 +145,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='glass_or_crystal_high',
+                       sv=True, svpth=save_path, svflnm='Figure3c',
                        cbl='Glass forming', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 

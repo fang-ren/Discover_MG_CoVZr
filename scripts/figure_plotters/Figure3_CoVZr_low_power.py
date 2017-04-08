@@ -20,8 +20,8 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\low\\'
-save_path = path + 'plots\\'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
 basename2 = 'CLEANED_Sample10_master_metadata_low.csv'
@@ -50,14 +50,14 @@ ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_low',
+                       sv=True, svpth=save_path, svflnm='FigureS2d',
                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_position_low',
+                       sv=True, svpth=save_path, svflnm='FigureS2b',
                        cbl='Peak position', vmin = 2.49, vmax = 3.15, cmap='viridis', cb=True, style='h')
 
 
@@ -88,12 +88,6 @@ for i in range(len(Co)):
             continue
 
 
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width_neighborhood]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_neighborhood_low',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
 # interpolation
@@ -134,7 +128,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_interpolated_low',
+                       sv=True, svpth=save_path, svflnm='Figure3b',
                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
@@ -153,7 +147,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='glass_or_crystal_low',
+                       sv=True, svpth=save_path, svflnm='Figure3d',
                        cbl='Glass forming', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 

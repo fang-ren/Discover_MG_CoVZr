@@ -15,18 +15,20 @@ from scipy import interpolate
 
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
-save_path = 'C:\Research_FangRen\Data\Metallic_glasses_data\CoVZr_ternary\masterfiles\\'
+
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
 
 # high power data
-path_high = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\high\\'
 
-basename1 = 'CLEANED_Sample8_master_metadata_high_WDS_Travis.csv'
+
+basename1 = 'CLEANED_Sample8_master_metadata_high_WDS.csv'
 basename2 = 'CLEANED_Sample14_master_metadata_high.csv'
 basename3 = 'CLEANED_Sample17_master_metadata_high_WDS.csv'
 
-filename1 = path_high + basename1
-filename2 = path_high + basename2
-filename3 = path_high + basename3
+filename1 = path + basename1
+filename2 = path + basename2
+filename3 = path + basename3
 
 data1 = np.genfromtxt(filename1, delimiter=',', skip_header = 1)
 data2 = np.genfromtxt(filename2, delimiter=',', skip_header = 1)
@@ -55,15 +57,14 @@ for i in range(len(Co_high)):
 
 
 # low power data
-path_low = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\low\\'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
 basename2 = 'CLEANED_Sample10_master_metadata_low.csv'
 basename3 = 'CLEANED_Sample18_master_metadata_low.csv'
 
-filename1 = path_low + basename1
-filename2 = path_low + basename2
-filename3 = path_low + basename3
+filename1 = path + basename1
+filename2 = path + basename2
+filename3 = path + basename3
 
 data1 = np.genfromtxt(filename1, delimiter=',', skip_header = 1)
 data2 = np.genfromtxt(filename2, delimiter=',', skip_header = 1)
@@ -121,21 +122,21 @@ for i in Co_range:
 peak_width_new_low = np.array(peak_width_new_low)
 peak_width_new_high = np.array(peak_width_new_high)
 
-
-ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new_high]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_high',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
-
-
-ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new_low]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_low',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new_high]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='peak_width_high',
+#                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+#
+#
+# ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new_low]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='peak_width_low',
+#                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 width_difference = peak_width_new_low-peak_width_new_high
 
@@ -143,7 +144,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[width_difference]), ax
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='wid_difference',
+                       sv=True, svpth=save_path, svflnm='Figure3e',
                        cbl='FWHM(low-power) - FWHM(high-power)', vmax = 0.27, vmin = 0, cmap='viridis', cb=True, style='h')
 
 print peak_width_new_high.max(), peak_width_new_high.min()

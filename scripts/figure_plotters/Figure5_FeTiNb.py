@@ -19,8 +19,9 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\FeNbTi\\masterfiles\\'
-save_path = path + 'plots\\'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
+
 
 basename1 = 'CLEANED_SampleB2_19_master_metadata.csv'
 basename2 = 'CLEANED_SampleB2_20_master_metadata.csv'
