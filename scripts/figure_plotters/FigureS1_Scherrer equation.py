@@ -45,17 +45,19 @@ BETA_r = np.array(BETA_r)
 BETA_degree = BETA_r * 180 / np.pi        
 
 crystalline = [3.5] * len(BETA)
-amorphous = [1.8] * len(BETA)
+amorphous = [1] * len(BETA)
 
 
+save_path = '..//..//figures//'
 
 plt.figure(1)
 plt.plot(TAU, BETA, label = 'Scherrer equation')
 plt.plot(crystalline, BETA, label = 'crystalline, D = 3.5 nm')
-plt.plot(amorphous, BETA, label = 'amorphous, D = 1.8 nm')
+plt.plot(amorphous, BETA, label = 'amorphous, D = 1.0 nm')
 plt.ylabel('FWHM in Q')
 plt.xlabel('D, nm')
 plt.xscale('log')
 plt.xlim((1, 100))
 plt.ylim((0, 0.6))
 plt.legend()
+plt.savefig(save_path+'FigureS1.png', dpi = 600)
