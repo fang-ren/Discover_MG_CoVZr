@@ -41,8 +41,8 @@ def file_index(index):
     elif len(str(index)) == 4:
         return str(index)
 
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\1Dfiles\\high_power_15\\backgrd_subtracted_1D_batch\\'
-save_path = path + 'Peak_fitting_GLS\\'
+path = '..//..//..//data//1D_spectra//background_subtracted//Sample15//'
+save_path = '..//..//..//data//1D_spectra//peak_fitted//Sample15//'
 base_name = 'Sample15_7thick_24x24_t30_'
 
 # parameters for 21
