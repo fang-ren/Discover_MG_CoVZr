@@ -11,29 +11,29 @@ import matplotlib.pyplot as plt
 import imp
 from scipy import interpolate
 
-plotTernary = imp.load_source("plt_ternary_save", "plotTernary_prediction.py")
+plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = 'C:\Research_FangRen\Data\Metallic_glasses_data\CoVZr_ternary\Logan_prediction\\'
-save_path = path + 'plots\\'
+path = '..//..//data//ML_prediction//'
+save_path = '..//..//figures//'
 
 
 
-filename_new = path + 'CoVZr-figure2.csv'
+filename_new = path + 'old-model_Co VZr.csv'
 data = np.genfromtxt(filename_new, delimiter=',', skip_header = 1)
 
-Co = data[:,3]*100
-V = data[:,4]*100
-Zr = data[:,5]*100
-probability = data[:, 1]
+Co = data[:,0]*100
+V = data[:,1]*100
+Zr = data[:,2]*100
+probability = data[:, 4]
 
-
-ternary_data = np.concatenate(([Co],[V],[Zr],[probability]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm= 'CoVZr_old_model.png',
-                       cbl='Probability (GFA = True)', vmin = 0, vmax = 1, cmap='viridis_r', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Co],[V],[Zr],[probability]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm= 'CoVZr_old_model.png',
+#                        cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
 
 # interpolation
@@ -69,8 +69,8 @@ ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpola
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='CoVZr_interpolate_old_model.png',
-                       cbl='Probability (GFA = True)', vmin = 0.3, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='Figure2.png',
+                       cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
 
 plt.close("all")
