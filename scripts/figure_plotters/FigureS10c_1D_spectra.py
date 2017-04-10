@@ -20,7 +20,7 @@ def file_index(index):
 
 
 # high power
-folder_path = '..//..//..//data//1D_spectra//background_subtracted//'
+folder_path = '..//..//data//1D_spectra//background_subtracted//'
 
 
 base_filename1 = 'Sample8_24x24_t30_'
