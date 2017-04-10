@@ -12,9 +12,10 @@ Scherrer equation
 import numpy as np
 import matplotlib.pyplot as plt
 
-lamda = 1.5406
+lamda = 0.9762
 K = 0.9  # shape factor
 
+# set up theta1 and theta2, both of them range from 0 to np.pi/4
 theta1 = np.array(range(1000))
 theta1 = 0.00314 * theta1/4
 theta2 = np.array(range(1000))
