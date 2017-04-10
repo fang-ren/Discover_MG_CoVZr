@@ -19,17 +19,17 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\Comparing _thickness\\'
-save_path = path + 'plots\\'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
 
-basename1 = 'Sample15_master_metadata.csv'
-basename2 = 'Sample14_master_metadata.csv'
-
-filename1 = path + basename1
-filename2 = path + basename2
+basename = 'CLEANED_Sample15_master_metadata.csv'
 
 
-data = np.genfromtxt(filename1, delimiter=',', skip_header = 1)
+filename = path + basename
+
+
+
+data = np.genfromtxt(filename, delimiter=',', skip_header = 1)
 
 
 Co = data[:,57]
@@ -41,19 +41,19 @@ peak_intensity = data[:,62]
 peak_width_neighborhood = np.copy(peak_width)
 
 
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_thick',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
-
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_position_thick',
-                       cbl='Scale', vmin = 2.51, vmax = 3.14, cmap='viridis', cb=True, style='h')
+# ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='peak_width_thick',
+#                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='peak_position_thick',
+#                        cbl='Scale', vmin = 2.51, vmax = 3.14, cmap='viridis', cb=True, style='h')
 
 
 # neighborhood voting
@@ -135,12 +135,12 @@ print peak_width_new.max(), peak_width_new.min()
 
 
 
-ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='peak_width_interpolated_thick',
-                       cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+# ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='peak_width_interpolated_thick',
+#                        cbl='Scale', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []
@@ -158,8 +158,8 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='glass_or_crystal_thick',
-                       cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='FigureS3a',
+                       cbl='Glass formation', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 #
 #
 # # plt.close('all')

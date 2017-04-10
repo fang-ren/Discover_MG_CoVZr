@@ -21,16 +21,20 @@ from scipy.stats import linregress
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
-# high power
-path = 'C:\\Research_FangRen\\Data\\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\high\\'
 
-basename1 = 'CLEANED_Sample8_master_metadata_high_WDS_Travis.csv'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
+
+
+# high power
+
+
+basename1 = 'CLEANED_Sample8_master_metadata_high_WDS.csv'
 basename2 = 'CLEANED_Sample14_master_metadata_high.csv'
 basename3 = 'CLEANED_Sample17_master_metadata_high_WDS.csv'
 
 
-##
-save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
+
 
 filename1 = path + basename1
 filename2 = path + basename2
@@ -211,7 +215,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[quasicrystals]), axis 
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='quasicrystals_high',
+                       sv=True, svpth=save_path, svflnm='FigureS4a',
                        cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 # np.savetxt(save_path+'quasicrystals.csv', ternary_data, delimiter=',')

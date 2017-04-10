@@ -23,15 +23,15 @@ plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
 # low power
-path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\masterfiles\\low\\'
+path = '..//..//data//master_data//'
+save_path = '..//..//figures//'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
 basename2 = 'CLEANED_Sample10_master_metadata_low.csv'
 basename3 = 'CLEANED_Sample18_master_metadata_low.csv'
 
 
-##
-save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
+
 
 filename1 = path + basename1
 filename2 = path + basename2
@@ -208,7 +208,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[quasicrystals]), axis 
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='quasicrystals_low',
+                       sv=True, svpth=save_path, svflnm='FigureS4b',
                        cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
 # np.savetxt(save_path+'quasicrystals.csv', ternary_data, delimiter=',')

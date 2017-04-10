@@ -20,19 +20,21 @@ def file_index(index):
 
 
 # high power
-folder_path_1 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\1Dfiles\\high_power_8_14_17\\Sample8\\background_subtracted\\'
+folder_path = '..//..//..//data//1D_spectra//background_subtracted//'
+
+
 base_filename1 = 'Sample8_24x24_t30_'
-basefile_path1 = folder_path_1 + base_filename1
+basefile_path1 = folder_path + 'Sample8//' + base_filename1
 
-folder_path_2 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\1Dfiles\\high_power_8_14_17\\Sample14\\background_subtracted\\'
+
 base_filename2 = 'Sample14_7thin_24x24_t30_'
-basefile_path2 = folder_path_2 + base_filename2
+basefile_path2 = folder_path + 'Sample14//' + base_filename2
 
-folder_path_3 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\1Dfiles\\high_power_8_14_17\\Sample17\\background_subtracted\\'
+
 base_filename3 = 'Sample17_24x24_t30_'
-basefile_path3 = folder_path_3 + base_filename3
+basefile_path3 = folder_path + 'Sample17//' + base_filename3
 
-save_path = 'C:\Research_FangRen\Data\July2016\CoVZr_ternary\masterfiles\high\plots\\'
+save_path = '..//..//figures//'
 
 
 ## making plots
@@ -132,4 +134,4 @@ plt.xlim((1.5, 4))
 plt.ylim((-50, 1100))
 plt.tick_params(axis='both', labelleft='off', labeltop='off', labelright='off')
 
-plt.savefig(save_path+'XRD_spectra_high', dpi = 600)
+plt.savefig(save_path+'FigureS10c', dpi = 600)

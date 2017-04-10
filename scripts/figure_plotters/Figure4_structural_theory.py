@@ -10,7 +10,7 @@ import imp
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
-save_path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
+save_path = '..//..//figures//'
 
 Zr_range = np.arange(0, 100, 1.05)
 V_range = np.arange(0, 100, 1.05)
@@ -75,5 +75,5 @@ ternary_data = np.concatenate(([Co_list], [V_list], [Zr_list], [label]), axis=0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
-                             sv=True, svpth=save_path, svflnm= 'Kevin_prediction.png',
+                             sv=True, svpth=save_path, svflnm= 'Figure4.png',
                              cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')

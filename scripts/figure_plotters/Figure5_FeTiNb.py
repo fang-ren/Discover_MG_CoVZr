@@ -48,15 +48,15 @@ peak_intensity = data[:,54]
 
 
 peak_width_neighborhood = np.copy(peak_width)
-#
-#
-# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='peak_width_low',
-#                        cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
-#
+
+
+ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width]), axis = 0)
+ternary_data = np.transpose(ternary_data)
+
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
+                       sv=True, svpth=save_path, svflnm='FigureS6a',
+                       cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
+
 # ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_position]), axis = 0)
 # ternary_data = np.transpose(ternary_data)
 #
@@ -143,13 +143,13 @@ print peak_width.max(), peak_width.min()
 print peak_width_new.max(), peak_width_new.min()
 
 
-# ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[peak_width_new]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='FWHM',
-#                        cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
-#
+ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[peak_width_new]), axis = 0)
+ternary_data = np.transpose(ternary_data)
+
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
+                       sv=True, svpth=save_path, svflnm='FigureS6b',
+                       cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
+
 
 labels = []
 for pw in peak_width_new:

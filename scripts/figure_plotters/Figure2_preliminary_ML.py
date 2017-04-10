@@ -22,10 +22,10 @@ save_path = '..//..//figures//'
 filename_new = path + 'old-model_Co VZr.csv'
 data = np.genfromtxt(filename_new, delimiter=',', skip_header = 1)
 
-Co = data[:,0]*100
-V = data[:,1]*100
-Zr = data[:,2]*100
-probability = data[:, 4]
+Co = data[:,3]*100
+V = data[:,4]*100
+Zr = data[:,5]*100
+probability = data[:, 1]
 
 #
 # ternary_data = np.concatenate(([Co],[V],[Zr],[probability]), axis = 0)

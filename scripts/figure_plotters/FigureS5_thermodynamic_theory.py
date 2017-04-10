@@ -24,7 +24,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import imp
 
-path = path = 'C:\\Research_FangRen\\Data\\Metallic_glasses_data\\CoVZr_ternary\\Theory\\'
+
+path = '..//..//figures//'
 
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
@@ -136,10 +137,10 @@ ternary_data = np.transpose(ternary_data)
 #                       cbl='Scale', vmax = 1.8, vmin = -1.2, cmap='viridis_r', cb=True, style='h')
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                      sv=True, svpth=path, svflnm='glass_formation',
-                      cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                      sv=True, svpth=path, svflnm='FigureS5',
+                      cbl='Glass formation', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
 
-np.savetxt(path+'thermodynamic.csv', ternary_data, delimiter=',')
+# np.savetxt(path+'thermodynamic.csv', ternary_data, delimiter=',')
 
 #
 # ##############
