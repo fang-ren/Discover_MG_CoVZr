@@ -40,8 +40,8 @@ data = np.concatenate((data1, data2, data3))
 
 ROI1 = data[:, 15]
 Fe = data[:,58]*100
-Nb = data[:,59]*100
 Ti = data[:,60]*100
+Nb = data[:,59]*100
 peak_position = data[:,52]
 peak_width = data[:,53]
 peak_intensity = data[:,54]
