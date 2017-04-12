@@ -5,10 +5,59 @@ __author__ = "Travis Williams"
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+import matplotlib
 from scripts.figure_plotters import ternary
 
+def shiftedColorMap(cmap, start=0.0, midpoint=0.5, stop=1.0, name=''):
+    '''
+    Function to offset the "center" of a colormap. Useful for
+    data with a negative min and positive max and you want the
+    middle of the colormap's dynamic range to be at zero
 
+    Input
+    -----
+      cmap : The matplotlib colormap to be altered
+      start : Offset from lowest point in the colormap's range.
+          Defaults to 0.0 (no lower ofset). Should be between
+          0.0 and `midpoint`.
+      midpoint : The new center of the colormap. Defaults to 
+          0.5 (no shift). Should be between 0.0 and 1.0. In
+          general, this should be  1 - vmax/(vmax + abs(vmin))
+          For example if your data range from -15.0 to +5.0 and
+          you want the center of the colormap at 0.0, `midpoint`
+          should be set to  1 - 5/(5 + 15)) or 0.75
+      stop : Offset from highets point in the colormap's range.
+          Defaults to 1.0 (no upper ofset). Should be between
+          `midpoint` and 1.0.
+    '''
+    cdict = {
+        'red': [],
+        'green': [],
+        'blue': [],
+        'alpha': []
+    }
+
+    # regular index to compute the colors
+    reg_index = np.linspace(start, stop, 257)
+
+    # shifted index to match the data
+    shift_index = np.hstack([
+        np.linspace(0.0, midpoint, 128, endpoint=False),
+        np.linspace(midpoint, 1.0, 129, endpoint=True)
+    ])
+
+    for ri, si in zip(reg_index, shift_index):
+        r, g, b, a = cmap(ri)
+
+        cdict['red'].append((si, r, r))
+        cdict['green'].append((si, g, g))
+        cdict['blue'].append((si, b, b))
+        cdict['alpha'].append((si, a, a))
+
+    newcmap = matplotlib.colors.LinearSegmentedColormap(name, cdict)
+    plt.register_cmap(cmap=newcmap)
+
+    return newcmap
 
 
 def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Species C'), scale=100,
@@ -78,8 +127,12 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     tax.left_axis_label(labelNames[2], offset=0.17, **font)
     tax.right_axis_label(labelNames[0], offset=0.17, **font)
 
+    modified_cmap = shiftedColorMap(matplotlib.cm.get_cmap(cmap), start=0, midpoint=1 - vmax / (vmax + abs(vmin)),
+                                    stop=1)
+
+
     # Plot data, boundary, gridlines, and ticks
-    tax.heatmap(d, style=style, cmap=cmap, cbarlabel=cbl, vmin=vmin, vmax=vmax, colorbar=cb)
+    tax.heatmap(d, style=style, cmap=modified_cmap, cbarlabel=cbl, vmin=vmin, vmax=vmax, colorbar=cb)
     tax.boundary(linewidth=1)
     tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
     ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
