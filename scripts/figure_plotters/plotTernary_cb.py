@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib
 from scripts.figure_plotters import ternary
 
+
 def shiftedColorMap(cmap, start=0.0, midpoint=0.5, stop=1.0, name=''):
     '''
     Function to offset the "center" of a colormap. Useful for
@@ -20,7 +21,7 @@ def shiftedColorMap(cmap, start=0.0, midpoint=0.5, stop=1.0, name=''):
       start : Offset from lowest point in the colormap's range.
           Defaults to 0.0 (no lower ofset). Should be between
           0.0 and `midpoint`.
-      midpoint : The new center of the colormap. Defaults to 
+      midpoint : The new center of the colormap. Defaults to
           0.5 (no shift). Should be between 0.0 and 1.0. In
           general, this should be  1 - vmax/(vmax + abs(vmin))
           For example if your data range from -15.0 to +5.0 and
@@ -38,12 +39,15 @@ def shiftedColorMap(cmap, start=0.0, midpoint=0.5, stop=1.0, name=''):
     }
 
     # regular index to compute the colors
-    reg_index = np.linspace(start, stop, 257)
+    reg_index = np.hstack([
+        np.linspace(start, 0.5, 128, endpoint=False),
+        np.linspace(0.5, stop, 129)
+    ])
 
     # shifted index to match the data
     shift_index = np.hstack([
         np.linspace(0.0, midpoint, 128, endpoint=False),
-        np.linspace(midpoint, 1.0, 129, endpoint=True)
+        np.linspace(midpoint, 1.0, 129)
     ])
 
     for ri, si in zip(reg_index, shift_index):
@@ -127,8 +131,10 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     tax.left_axis_label(labelNames[2], offset=0.17, **font)
     tax.right_axis_label(labelNames[0], offset=0.17, **font)
 
-    modified_cmap = shiftedColorMap(matplotlib.cm.get_cmap(cmap), start=0, midpoint=1 - vmax / (vmax + abs(vmin)),
-                                    stop=1)
+    modified_cmap = shiftedColorMap(matplotlib.cm.get_cmap('BrBG'),
+                                    start=0,
+                                    midpoint=1 - vmax / (vmax + abs(vmin)),
+                                    stop=1 - (abs(vmin) - vmax) / (2 * abs(vmin)))
 
 
     # Plot data, boundary, gridlines, and ticks
