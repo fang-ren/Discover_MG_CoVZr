@@ -67,7 +67,8 @@ for i in range(len(Fe)):
 
     alloy.source = Source(producer='Hattrick-Simplers Group (The University of South Carolina)')
 
-    alloy.properties = [Property(name = 'XRD Intensity', scalars = IntAve,
+    alloy.properties = [Property(name = 'Qchi', files = FileReference(relative_path= '/Qchi_thumbnails/' + spectra_basename + file_index(scan_num[i]) + '_Qchi.png')),
+                        Property(name = 'XRD Intensity', scalars = IntAve,
                                  conditions=[Value(name = 'Q, (Angstrom$^{-1}$)', scalars = Qlist),
                                              Value(name='Temperature', scalars='25', units='$^\\circ$C'),
                                              Value(name='Exposure time', scalars='30', units='seconds')],
