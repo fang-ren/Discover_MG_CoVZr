@@ -30,8 +30,8 @@ path = '..//..//figures//'
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-Co_range = np.arange(0, 1, 0.01)
-V_range = np.arange(0, 1, 0.01)
+Co_range = np.arange(0, 1, 0.015)
+V_range = np.arange(0, 1, 0.015)
 
 
 Co_c = []
@@ -138,7 +138,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                       sv=True, svpth=path, svflnm='FigureS5',
-                      cbl='Glass formation', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                      cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')
 
 # np.savetxt(path+'thermodynamic.csv', ternary_data, delimiter=',')
 

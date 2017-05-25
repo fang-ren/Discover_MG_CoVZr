@@ -12,8 +12,8 @@ plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 save_path = '..//..//figures//'
 
-Zr_range = np.arange(0, 100, 1.05)
-V_range = np.arange(0, 100, 1.05)
+Zr_range = np.arange(0, 100, 1.5)
+V_range = np.arange(0, 100, 1.5)
 
 Co_list = []
 V_list = []
@@ -76,4 +76,4 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
                              sv=True, svpth=save_path, svflnm= 'Figure4.png',
-                             cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                             cbl='Scale', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')
