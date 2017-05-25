@@ -2,7 +2,7 @@
 """
 Created on Fri Jun 17 15:37:51 2016
 
-@author: fangren
+@author: fangren, Travis Williams
 """
 
 import matplotlib.pyplot as plt
@@ -28,7 +28,7 @@ def func(x, *params):
         wid = params[i+2]
         n = params[i+3]
         y = y + n * amp * np.exp(-4 * np.log(2) * ((x - ctr) / wid) ** 2) + (1 - n) * amp * wid ** 2 / 4 / (
-        (x - ctr) ** 2 + wid ** 2 / 4)
+        (x - ctr) ** 2 + wid ** 2 / 4)  # modified by Travis Williams
     return y
 
 def file_index(index):

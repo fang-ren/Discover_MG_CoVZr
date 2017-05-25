@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import imp
 from scipy import interpolate
 
+
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
@@ -18,10 +19,10 @@ path = '..//..//data//ML_prediction//'
 save_path = '..//..//figures//'
 
 
-alloy = 'Co VZr'
+alloy = 'FeTiNb'
 
-# to switch to CoVZr alloy, uncomment the line below
-#alloy = 'CoVZr'
+# # to switch to CoVZr alloy, uncomment the line below
+# alloy = 'Co VZr'
 
 
 filename_new = path + 'new-glasses_' + alloy + '.csv'
@@ -89,37 +90,18 @@ for i in metal1_range:
                 continue
 
 # for FeTiNb
-# ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_old]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-#                        sv=True, svpth=save_path, svflnm= 'Figure5c.png',
-#                        cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
-#
-# ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-#                        sv=True, svpth=save_path, svflnm='Figure5d.png',
-#                        cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
-#
-# probability_interpolate_new = np.array(probability_interpolate_new)
-# probability_interpolate_old = np.array(probability_interpolate_old)
-# ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-#                        sv=True, svpth=save_path, svflnm='Figure5e.png',
-#                        cbl='Probability difference', cmap='viridis_r', cb=True, style='h')
+ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_old]), axis = 0)
+ternary_data = np.transpose(ternary_data)
 
+plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
+                       sv=True, svpth=save_path, svflnm= 'Figure5c.png',
+                       cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
-
-# for CoVZr
 ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure5a.png',
+                       sv=True, svpth=save_path, svflnm='Figure5d.png',
                        cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
 
 probability_interpolate_new = np.array(probability_interpolate_new)
@@ -127,9 +109,36 @@ probability_interpolate_old = np.array(probability_interpolate_old)
 ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure5b.png',
-                       cbl='Probability difference', cmap='viridis_r', cb=True, style='h')
+print np.max(probability_interpolate_new-probability_interpolate_old), np.min(probability_interpolate_new-probability_interpolate_old)
+plotTernary_cb = imp.load_source("plt_ternary_save", "plotTernary_cb.py")
+plotTernary_cb.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
+                       sv=True, svpth=save_path, svflnm='Figure5e.png',
+                       cbl='Probability difference', vmax = 0.09, vmin = -0.35, cmap='BrBG', cb=True, style='h')
+
+
+
+# # for CoVZr
+# ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
+#                        sv=True, svpth=save_path, svflnm='Figure5a.png',
+#                        cbl='Probability (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
+#
+# probability_interpolate_new = np.array(probability_interpolate_new)
+# probability_interpolate_old = np.array(probability_interpolate_old)
+# ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# print np.max(probability_interpolate_new-probability_interpolate_old), np.min(probability_interpolate_new-probability_interpolate_old)
+#
+#
+# plotTernary_cb = imp.load_source("plt_ternary_save", "plotTernary_cb.py")
+# plotTernary_cb.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
+#                        sv=True, svpth=save_path, svflnm='Figure5b.png',
+#                        cbl='Probability difference', vmin = -0.87, vmax = 0.43, cmap='BrBG', cb=True, style='h')
+
+
 
 plt.close("all")
 
