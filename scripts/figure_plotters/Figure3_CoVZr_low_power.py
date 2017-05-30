@@ -148,7 +148,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='Figure3d',
-                       cbl='Glass forming', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                       cbl='Glass forming', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 
 plt.close('all')

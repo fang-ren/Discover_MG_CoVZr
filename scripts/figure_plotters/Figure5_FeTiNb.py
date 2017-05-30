@@ -167,7 +167,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='Figure5f',
-                       cbl='Scale', vmax = 1.4, vmin = -0.1, cmap='viridis_r', cb=True, style='h')
+                       cbl='Scale', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 
 plt.close('all')
