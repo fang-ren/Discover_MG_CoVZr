@@ -1,0 +1,67 @@
+// Load in a dataset of compounds
+data = new data.materials.CompositionDataset
+data import ../datasets/landolt-combined.txt
+
+// Replace all AC entries with CR
+data target gfa
+data modify ClassEliminationModifier AC CR
+
+//   Add in the new data
+new_data = data clone -empty
+new_data import ../datasets/new-data/sputtering_CoVZr.data
+data add $new_data
+
+// Remove duplicates
+//  In this case, entries with the same composition 
+//    and different "processing" are not duplicates.
+//  To run this kind of duplicate generation, we add
+//    the processing property as an attribute. Attributes
+//    are considered when testing whether entries are duplicates
+agen = new attributes.generators.PropertyAsAttributeGenerator processing
+agen run $data
+data duplicates RankingDuplicateResolver minmize PropertyRanker gfa SimpleEntryRanker
+
+// Generate new attributes
+data attributes properties directory ../magpie/lookup-data/
+data attributes properties add set general
+data attributes generators add composition.APEAttributeGenerator 0.01 -neighbors 1 3 5
+data attributes generators add composition.YangOmegaAttributeGenerator
+data attributes generate
+
+// Create a model for melt spinning data
+//    These are the settings for the MS model in ./processing-tests/meltspin-stacked/generate-model.out
+model_ms = new models.classification.WekaClassifier trees.RandomForest -I 400 -K 16 -num-slots 0
+model_ms filter exclude PropertyFilter measured processing == 1
+
+// Reduce dataset to only melt-spinning data
+ms_data = data clone
+ms_data filter include PropertyFilter measured processing == 0
+
+// Test on melt spinning data
+model_ms train $ms_data
+val_data = model_ms crossvalidate $ms_data 10
+print model_ms validation stats
+
+// Create a model for sputtering with the stacking technique
+model_sp = new models.classification.WekaClassifier trees.RandomForest -K 16 -I 200 -num-slots 0
+model_sp filter exclude PropertyFilter measured processing == 0
+
+// Add in the stacked model
+data attributes generators add ModelPredictionAttributeGenerator meltspinningGFA $model_ms $data
+data attributes generate
+
+// Reduce dataset to only sputtering data
+sp_data = data clone
+sp_data filter exclude PropertyFilter measured processing == 0
+
+// Test with this
+model_sp train $sp_data
+val_data = model_sp crossvalidate $sp_data 10
+print model_sp validation stats
+
+// Save the model and dataset
+save model_sp gfa-sputtering_model
+save sp_data gfa-sputtering_data template 
+save data gfa-sputtering_training-data 
+
+exit

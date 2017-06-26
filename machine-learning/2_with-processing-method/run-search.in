@@ -1,0 +1,29 @@
+// Load in model trained on only LB data
+data = load after-CoVZr-data/gfa-sputtering_data.obj
+model = load after-CoVZr-data/gfa-sputtering_model.obj
+
+// Load the compositions of all metallic glasses in the training set
+am = load after-CoVZr-data/gfa-sputtering_training-data.obj
+am target gfa
+//    Get only the amorphous entries
+am filter include ClassFilter measured = 0
+
+// Create generator for making new alloys
+data generate PhaseDiagramCompositionEntryGenerator & 
+        1 3 -alloy 2  B Mg Al Si Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ge Sr Zr Mo In Sn Si Ba Ta
+
+// Evaluate all alloys
+eval = new utility.tools.BatchModelEvaluator $model 100000
+timer start
+eval run $data
+timer elapsed
+
+// Evaluate the distance from known compositions
+timer start
+data modify CompositionSetDistanceModifier $am -euclidean
+timer elapsed
+
+// Save the results in JSON format
+save data new-glasses json
+
+exit

@@ -1,0 +1,32 @@
+// Load in a dataset of compounds
+data = new data.materials.CompositionDataset
+data import ../datasets/landolt-combined.txt
+
+// Replace all AC entries with CR
+data target gfa
+data modify ClassEliminationModifier AC CR
+
+// Remove duplicates
+//  In this case, entries with the same composition 
+//    and different "processing" are not duplicates.
+//  To run this kind of duplicate generation, we add
+//    the processing property as an attribute. Attributes
+//    are considered when testing whether entries are duplicates
+agen = new attributes.generators.PropertyAsAttributeGenerator processing
+agen run $data
+data duplicates RankingDuplicateResolver minimize PropertyRanker gfa SimpleEntryRanker
+
+// Add new attribute generators
+data attributes generators add composition.APEAttributeGenerator 0.01 -neighbors 1 3 5
+data attributes generators add composition.YangOmegaAttributeGenerator
+data attributes generators add PropertyAsAttributeGenerator processing
+
+// Generate new attributes
+data attributes properties directory ../magpie/lookup-data/
+data attributes properties add set general
+data attributes generate
+
+// Save the data to disk
+save data all_data
+
+exit

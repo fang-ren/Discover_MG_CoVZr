@@ -1,0 +1,27 @@
+data = load gfa-data.obj 
+model = load gfa-model.obj 
+am = new data.materials.CompositionDataset 
+am import ../datasets/landolt.txt 
+	Imported 6780 entries
+am target gfa 
+	Set target property to gfa. 1 entries were removed.
+am filter include ClassFilter measured = 0 
+	Filtered using a ClassFilter. New size: 4861
+data generate PhaseDiagramCompositionEntryGenerator 1 3 -alloy 2 B Mg Al Si Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ge Sr Zr Mo In Sn Si Ba Ta 
+	Generated 2095116 new entries with a PhaseDiagramCompositionEntryGenerator. Total Count: 2095116
+eval = new utility.tools.BatchModelEvaluator $model 100000 
+timer start 
+	Zeroed default timer
+eval run $data 
+	Evaluated a WekaClassifier on 2095116 entries in blocks of 100000
+timer elapsed 
+	Total time elapsed: 386.650 s
+timer start 
+	Zeroed default timer
+data modify CompositionSetDistanceModifier $am -euclidean 
+	Modified dataset using a CompositionSetDistanceModifier
+timer elapsed 
+	Total time elapsed: 40.591 s
+save data new-glasses json 
+	Saved data to disk in json format to new-glasses.json
+exit 
