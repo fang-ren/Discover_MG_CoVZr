@@ -1,0 +1,3 @@
+[submodule "machine-learning/magpie"]
+	path = machine-learning/magpie
+	url = https://bitbucket.org/wolverton/magpie.git
