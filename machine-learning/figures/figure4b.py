@@ -16,7 +16,7 @@ from scipy import interpolate
 import imp
 import os
 import pandas as pd
-from ternary_helper import interpolation_ternary
+from ternary_helper import interpolation_ternary, make_cmap
 
 # Important variables to change
 path = os.path.join('..','2_with-processing-method','plots')
@@ -64,4 +64,4 @@ ternary_data = np.transpose(ternary_data)
 
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='Figure4b.png',
-                       cbl='Liklihood (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                       cbl='Liklihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')

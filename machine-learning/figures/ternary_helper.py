@@ -3,14 +3,42 @@ __author__ = "Travis Williams"
 # Jason Hattrick-Simpers group
 # Starting Date: June, 2016
 
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+from matplotlib import cm
+from matplotlib.colors import ListedColormap
 import numpy as np
 import os
 
 import ternary
 
+def make_cmap(base='viridis_r', scale_factor=1.5, cutoff=0.9, adjust_factor=0.1):
+    """Make a colormap that this scaled to emphasize the top of the range.
+    
+    Two kinds of emphasis:
+        1) Scaling the colormap to have a stronger gradient at the top
+        2) Making the colors below a treshold lighter
+        
+    Inputs:
+        base - str, base color map name
+        scale_factor - float, how much to exaggerate the range at the top (larger value -> larger scaling)
+        cutoff - float, treshold below which to lighten colors (0-1)
+        adjust_factor - float, how much to dampen colors (0-1)
+    Returns:
+        Colormap
+    """
+    
+    # Get the base colormap
+    v = cm.get_cmap('viridis_r')
+    
+    # Scale it
+    new_list = v(np.linspace(0,1,300) ** scale_factor)
+
+    # Apply cutoff
+    new_list[:int(len(new_list)*cutoff),:3] += (1 - new_list[:int(len(new_list)*0.9),:3]) * adjust_factor
+    return ListedColormap(new_list, name='%s_scaled'%base)
+
 def interpolation_ternary(data, tertitle='',  labelNames=('Species A','Species B','Species C'), scale=100,
-                       sv=False, svpth=r"C:/Users/Travis W/Pictures/", svflnm='Unnamed',
+                       sv=False, svpth=".", svflnm='Unnamed',
                        cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h'):
     """
     Overview
@@ -57,7 +85,6 @@ def interpolation_ternary(data, tertitle='',  labelNames=('Species A','Species B
     y = data[:, 0]
     if cb:
         i = data[:, 3]
-
         for col in range(1, len(x)):
             d[(x[col], y[col])] = i[col]
     else:
@@ -77,7 +104,7 @@ def interpolation_ternary(data, tertitle='',  labelNames=('Species A','Species B
     tax.right_axis_label(labelNames[0], offset=0.17, **font)
 
     # Plot data, boundary, gridlines, and ticks
-    tax.heatmap(d, style=style, cmap=cmap, cbarlabel=cbl, vmin=vmin, vmax=vmax, colorbar=cb)
+    tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, colorbar=False)
     tax.boundary(linewidth=1)
     tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
     ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
@@ -85,9 +112,24 @@ def interpolation_ternary(data, tertitle='',  labelNames=('Species A','Species B
 
     # Set chart title
     tax.set_title(tertitle)
+    
+    # Make a colorbar
+    i = ax.imshow([[5]], cmap=cmap, vmin=vmin, vmax=vmax)
+    cb = plt.colorbar(i)
+    
+    cb.set_label(cbl)
+    
+    ticks = np.arange(0.5, 1.0, 0.05)
+    cb.set_ticks(ticks)
+    cb.set_ticks = np.arange(0.5, 1.0, 0.05)
+    tick_labels = np.array(['%.1f'%t for t in ticks])
+    tick_labels[1::2] = ''
+    cb.set_ticklabels(tick_labels)
+    
+    cb.update_ticks()
 
     # Make chart pretty
-    tax.clear_matplotlib_ticks()
+    #tax.clear_matplotlib_ticks()
     tax._redraw_labels()
     plt.tight_layout()
 

@@ -10,12 +10,11 @@ Plot the formation enthalpy predicted by our original model:
 # Load in libraries
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import cm
 from scipy import interpolate
 import imp
 import os
 import pandas as pd
-from ternary_helper import interpolation_ternary
+from ternary_helper import interpolation_ternary, make_cmap
 
 # Important variables to change
 path = os.path.join('..','0_original-model','plots')
@@ -35,8 +34,8 @@ probability = data['probability']
 probability_func = interpolate.Rbf(Co, V, Zr, probability, function='multiquadric',
                                        smooth=0.3)
 
-metal1_range = np.arange(0, 100, 1.25)
-metal2_range = np.arange(0, 100, 1.25)
+metal1_range = np.linspace(0, 100, 63)
+metal2_range = np.linspace(0, 100, 63)
 
 metal1 = []
 metal2 = []
@@ -56,11 +55,12 @@ for i in metal1_range:
                 continue
 
 
-# Make a new colormap that has alpha of 0.5 below 0.95%
-                
+# Make a new colormap that lightens colors color
+new_cmap = make_cmap()
+                    
 ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure2.png',
-                       cbl='Liklihood (GFA = True)', vmin = 0.5, vmax = 1, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='Figure2c1.png',
+                       cbl='Liklihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=new_cmap, cb=True, style='h')
