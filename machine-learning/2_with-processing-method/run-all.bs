@@ -8,6 +8,6 @@ java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
 java -jar ../magpie/dist/Magpie.jar -n $NPROCS run-search.in > run-search.out
 
 # Analyze the results
-python ..\py\rank_systems.py new-glasses.json 0.95 0.1
-python ..\py\plot_single_system.py new-glasses.json Co V Zr
-python ..\py\plot_single_system.py new-glasses.json Fe Nb Ti
+python ../py/rank_systems.py new-glasses.json 0.95 0.1
+python ../py/plot_single_system.py new-glasses.json Co V Zr
+python ../py/plot_single_system.py new-glasses.json Fe Nb Ti
