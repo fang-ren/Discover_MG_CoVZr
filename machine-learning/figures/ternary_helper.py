@@ -6,10 +6,47 @@ __author__ = "Travis Williams"
 from matplotlib import pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import ListedColormap
+from scipy import interpolate
 import numpy as np
 import os
 
 import ternary
+
+def interpolate_probabilities(a,b,c,p):
+    """Prepare probabilities for plotting with ternary's heatmap
+    
+    Inputs:
+        a,b,c - Fractions of metal A,B,C
+        p - Probability function to be interpolated
+    Output:
+        Probabilities at a finer spacing all over the ternary, in a form that 
+    """
+        
+    probability_func = interpolate.Rbf(a,b,c,p, function='multiquadric',
+                                           smooth=0.3)
+
+    metal1_range = np.linspace(0, 100, 63, endpoint=False) # Makes the nicest plots
+    metal2_range = metal1_range[:] # Copy
+
+    metal1 = []
+    metal2 = []
+    metal3 = []
+
+    probability_interpolate = []
+
+    for i in metal1_range:
+        for j in metal2_range:
+            if i + j <= 100 and i+j >= 0:
+                try:
+                    metal1.append(i)
+                    metal2.append(j)
+                    metal3.append(100-i-j)
+                    probability_interpolate.append(float(probability_func(i, j, (100-i-j))))
+                except(ValueError):
+                    continue
+
+    ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate]), axis = 0)
+    return np.transpose(ternary_data)
 
 def make_cmap(base='viridis_r', scale_factor=1.5, cutoff=0.9, adjust_factor=0.1):
     """Make a colormap that this scaled to emphasize the top of the range.
@@ -119,9 +156,8 @@ def interpolation_ternary(data, tertitle='',  labelNames=('Species A','Species B
     
     cb.set_label(cbl)
     
-    ticks = np.arange(0.5, 1.0, 0.05)
+    ticks = np.arange(0.5, 1.01, 0.05)
     cb.set_ticks(ticks)
-    cb.set_ticks = np.arange(0.5, 1.0, 0.05)
     tick_labels = np.array(['%.1f'%t for t in ticks])
     tick_labels[1::2] = ''
     cb.set_ticklabels(tick_labels)
