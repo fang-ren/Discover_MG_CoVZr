@@ -33,4 +33,4 @@ probability = data['probability']
 ternary_data = interpolate_probabilities(Fe, Nb, Ti, probability)
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Fe', 'Nb', 'Ti'), scale=100,
                        sv=True, svpth=save_path, svflnm='Figure5b.png',
-                       cbl='Liklihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
+                       cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
