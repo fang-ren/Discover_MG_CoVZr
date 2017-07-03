@@ -1,3 +1,4 @@
+# Author: Logan Ward
 import matplotlib.figure as f
 import matplotlib.pyplot as plt
 from matplotlib import gridspec

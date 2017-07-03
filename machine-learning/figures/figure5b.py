@@ -5,7 +5,7 @@ Plot the formation enthalpy predicted with
     - Accounts for processing with "stacked" approach
     - Uses Yang and Laws theories
     
-@author: fangren
+@author: fangren, Logan Ward
 """
 
 # Load in libraries

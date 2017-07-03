@@ -1,4 +1,4 @@
-__author__ = "Travis Williams"
+__author__ = "Travis Williams. :pgam Ward"
 # University of South Carolina
 # Jason Hattrick-Simpers group
 # Starting Date: June, 2016

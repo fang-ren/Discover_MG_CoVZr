@@ -4,7 +4,7 @@ Plot the formation enthalpy predicted by our original model:
     - Trained on meltspinning GFA
     - Uses Yang and Laws theories
 
-@author: fangren
+@author: fangren, Logan Ward
 """
 
 # Load in libraries
