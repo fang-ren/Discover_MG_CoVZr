@@ -36,7 +36,7 @@ elems = sys.argv[2:]
 
 # Load in the results
 def parse_json_data(filename):
-    json_out = json.load(open(filename, 'rb'))
+    json_out = json.load(gzip.open(filename, 'r'))
     entries = json_out['entries']
     #gfa_prop = [x['name'] for x in json_out['properties']].index('gfa')
     try:

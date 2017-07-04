@@ -17,7 +17,7 @@ import pandas as pd
 from ternary_helper import interpolation_ternary, make_cmap, interpolate_probabilities
 
 # Important variables to change
-path = os.path.join('..','0_original-model','plots')
+path = os.path.join('..','1_with-theories','plots')
 save_path = os.path.join('..','..','figures')
 
 # Load in the ML results
@@ -33,5 +33,5 @@ probability = data['probability']
 # Interpolate probabilities
 ternary_data = interpolate_probabilities(Co, V, Zr, probability)
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure2c1.png',
+                       sv=True, svpth=save_path, svflnm='Figure2c.png',
                        cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
