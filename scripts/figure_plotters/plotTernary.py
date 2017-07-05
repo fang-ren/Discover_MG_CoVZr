@@ -41,7 +41,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     """
     if sv:
         font = {'size': 12}   # Set font size for **kwargs
-        figsize = (3.4, 2.5)
+        figsize = (4, 3)
         ticksize = 6
         lnwdth = 0.5
         lnsty = '--'
@@ -67,25 +67,27 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
             d[(x[col], y[col])] = 0.5
 
     # Turn off normal axis, set figure size
-    figure, ax = plt.subplots(figsize=figsize)
+    figure, (ax, cax) = plt.subplots(ncols=2, figsize=figsize, gridspec_kw={"width_ratios":[1, 0.05]})
     ax.axis("off")
 
     # Create ternary axes (tax)
     figure, tax = ternary.figure(ax=ax, scale=scale)
 
     # Axis Labels (bottom corrisponds to x values, left corrisponds to y values)
-    tax.bottom_axis_label(labelNames[0], position=(-0.1, 1.2, 0), rotation=0, **font)
-    tax.left_axis_label(labelNames[1], position=(1, 0.05, 0), rotation=0, **font)
-    tax.right_axis_label(labelNames[2], position=(-0.05, 0.05, 0), rotation=0, **font)
+    tax.bottom_axis_label(labelNames[0], position=(-0.13, 1.25, 0), rotation=0, **font)
+    tax.left_axis_label(labelNames[1], position=(1.05, 0.00, 0), rotation=0, **font)
+    tax.right_axis_label(labelNames[2], position=(-0.05, 0.00, 0), rotation=0, **font)
 
     # Plot data, boundary, gridlines, and ticks
-    tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, cb = False)
+    tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, colorbar=False)
 
     if cb:
-        cax = ax.imshow([[0]], vmin=vmin, vmax=vmax)
-    cbaxes = figure.add_axes([0.85, 0.2, 0.03, 0.7])  # [left, bottom, width, height] of colorbar
-    cbar = figure.colorbar(cax, ax=ax, cax=cbaxes)
-    cbar.set_label(cbl)
+        cdat = ax.imshow([[0]], vmin=vmin, vmax=vmax)
+        cbar = figure.colorbar(cdat, ax=ax, cax=cax)
+        pos1 = cax.get_position()
+        pos2 = [pos1.x0 - 0.05, pos1.y0 + 0.1, pos1.width, pos1.height * 0.85]
+        cax.set_position(pos2)
+        cbar.set_label(cbl)
 
     tax.boundary(linewidth=1)
     tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
@@ -98,7 +100,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     # Make chart pretty
     tax.clear_matplotlib_ticks()
     tax._redraw_labels()
-    plt.tight_layout()
+    # plt.tight_layout()
 
     # Save or show
     if sv:
