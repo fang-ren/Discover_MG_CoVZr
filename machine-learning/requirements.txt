@@ -1,5 +1,5 @@
-numpy
-scipy
-pandas
-matplotlib
-python-ternary
+numpy==1.12.1
+scipy==0.19.0
+pandas==0.19.2
+matplotlib==2.0.2
+python-ternary==1.0.1

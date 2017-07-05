@@ -1,0 +1,14 @@
+#! /bin/bash
+NPROCS=4
+
+# Make the model
+java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
+
+# Run the search
+java -jar ../magpie/dist/Magpie.jar -n $NPROCS run-search.in > run-search.out
+gzip --verbose --best new-glasses.json
+
+# Analyze the results
+python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1
+python ../py/plot_single_system.py new-glasses.json.gz Co V Zr
+python ../py/plot_single_system.py new-glasses.json.gz Fe Nb Ti

@@ -16,7 +16,7 @@ prob_threshold = float(sys.argv[2])
 dist_threshold = float(sys.argv[3])
 
 # Read in the JSON file
-json_out = json.load(open(sys.argv[1], 'rb'))
+json_out = json.load(gzip.open(sys.argv[1], 'rt'))
 entries = json_out['entries']
 dist_prop = [x['name'] for x in json_out['properties']].index('compdistance')
 am_class = json_out['class-names'].index('AM')

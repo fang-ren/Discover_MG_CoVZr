@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Generate results
-for dir in 0_original-model 1_testing-adding-processing-method 2_with-processing-method 3_with-CoVZr-data; do
+for dir in 0_ward-2016 1_with-theories 2_testing-adding-processing-method 3_with-processing-method 4_with-CoVZr-data; do
 	cd $dir
 	echo $dir
 	time ./run-all.bs
