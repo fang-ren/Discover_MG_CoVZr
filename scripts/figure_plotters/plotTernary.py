@@ -75,9 +75,14 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     figure, tax = ternary.figure(ax=ax, scale=scale)
 
     # Axis Labels (bottom corrisponds to x values, left corrisponds to y values)
-    tax.bottom_axis_label(labelNames[0], position=(-0.11, 1.22, 0), rotation=0, **font)
-    tax.left_axis_label(labelNames[1], position=(1.05, 0.00, 0), rotation=0, **font)
-    tax.right_axis_label(labelNames[2], position=(-0.08, 0.00, 0), rotation=0, **font)
+    if show_ticks:
+        tax.bottom_axis_label(labelNames[0], position=(-0.11, 1.22, 0), rotation=0, **font)
+        tax.left_axis_label(labelNames[1], position=(1.05, 0.00, 0), rotation=0, **font)
+        tax.right_axis_label(labelNames[2], position=(-0.08, 0.00, 0), rotation=0, **font)
+    else:
+        tax.bottom_axis_label(labelNames[0], position=(-0.07, 1.13, 0), rotation=0, **font)
+        tax.left_axis_label(labelNames[1], position=(0.96, 0.05, 0.00), rotation=0, **font)
+        tax.right_axis_label(labelNames[2], position=(-0.01, 0.05, 0), rotation=0, **font)
 
     # Plot data, boundary, gridlines, and ticks
     tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, colorbar=False)
