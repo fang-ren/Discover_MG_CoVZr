@@ -46,7 +46,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
         ticksize = 6
         lnwdth = 0.5
         lnsty = '--'
-        alpha = 0.15
+        alpha = 0.5
     else:
         font = {'size': 30}   # Set font size for **kwargs
         figsize = (30, 30)

@@ -14,10 +14,7 @@ from os.path import basename
 import imp
 import scipy
 from scipy import interpolate
-
-
-plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
-
+from plotTernary import plt_ternary_save
 
 path = '..//..//data//master_data//'
 save_path = '..//..//figures//'
@@ -50,39 +47,6 @@ peak_intensity = data[:,54]
 peak_width_neighborhood = np.copy(peak_width)
 
 
-ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS6a',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
-
-# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_position]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='peak_position_low',
-#                        cbl='Peak position', vmin = 2.68, vmax = 3.05, cmap='viridis', cb=True, style='h')
-
-
-# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[[1]*len(Fe)]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='black_low',
-#                        cbl='Scale', cmap='gray', cb=True, style='h')
-
-
-
-#
-# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[ROI1]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='ROI1',
-#                        cbl='Scale', cmap='viridis', cb=True, style='h')
-
-
 # neighborhood voting
 neighborhood_window = 1
 
@@ -101,15 +65,7 @@ for i in range(len(Fe)):
             continue
 
 
-# ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_width_neighborhood]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='peak_width_neighborhood_low',
-#                        cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
-#
 
-# interpolation
 peak_width_func = interpolate.Rbf(Fe, Nb, Ti, peak_width_neighborhood, function='multiquadric', smooth=0.3)
 
 Fe_range = np.arange(5.8, 84.7, 1)
@@ -143,13 +99,6 @@ print peak_width.max(), peak_width.min()
 print peak_width_new.max(), peak_width_new.min()
 
 
-ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[peak_width_new]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS6b',
-                       cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
-
 
 labels = []
 for pw in peak_width_new:
@@ -165,9 +114,9 @@ for pw in peak_width_new:
 ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure5f',
-                       cbl='Scale', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
+plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
+                       sv=True, svpth=save_path, svflnm='Figure5c',
+                       cbl='Scale', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h', show_ticks= False)
 
 
 plt.close('all')

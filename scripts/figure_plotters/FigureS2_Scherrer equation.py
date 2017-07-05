@@ -61,7 +61,7 @@ plt.xscale('log')
 plt.xlim((0.9, 100))
 plt.ylim((0, 0.6))
 plt.legend()
-plt.savefig(save_path+'FigureS1.png', dpi = 600)
+plt.savefig(save_path+'FigureS2.png', dpi = 600)
 
 
 # to plot the scherrer equation using Bragg angles (degrees), uncomment the following code

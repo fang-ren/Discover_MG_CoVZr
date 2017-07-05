@@ -138,4 +138,4 @@ plt.xlim((1.5, 4))
 plt.ylim((-50, 1100))
 plt.tick_params(axis='both', labelleft='off', labeltop='off', labelright='off')
 
-plt.savefig(save_path+'FigureS10d', dpi = 600)
+plt.savefig(save_path+'FigureS3d', dpi = 600)

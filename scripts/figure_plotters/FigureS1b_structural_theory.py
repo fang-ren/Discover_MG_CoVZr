@@ -82,5 +82,5 @@ ternary_data = np.concatenate(([Co_list], [V_list], [Zr_list], [label]), axis=0)
 ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
-                             sv=True, svpth=save_path, svflnm= 'Figure2b2.png',
-                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h', show_ticks= False)
+                             sv=True, svpth=save_path, svflnm= 'FigureS1b.png',
+                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')

@@ -46,29 +46,6 @@ peak_intensity = data[:,62]
 peak_width_neighborhood = np.copy(peak_width)
 
 
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS2d',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
-
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS2b',
-                       cbl='Peak position', vmin = 2.49, vmax = 3.15, cmap='viridis', cb=True, style='h')
-
-
-# ternary_data = np.concatenate(([Co],[V],[Zr],[[1]*len(Co)]), axis = 0)
-# ternary_data = np.transpose(ternary_data)
-#
-# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='black_low',
-#                        cbl='Scale', cmap='gray', cb=True, style='h')
-
-
 
 # neighborhood voting
 neighborhood_window = 1
@@ -123,13 +100,13 @@ peak_width_new = np.array(peak_width_new)
 print peak_width.max(), peak_width.min()
 print peak_width_new.max(), peak_width_new.min()
 
-
-ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure3b',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='Figure3b',
+#                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []
@@ -147,7 +124,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure3d',
+                       sv=True, svpth=save_path, svflnm='Figure3b',
                        cbl='Glass forming', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 
