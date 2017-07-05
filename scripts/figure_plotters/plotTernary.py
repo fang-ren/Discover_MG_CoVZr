@@ -74,12 +74,19 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     figure, tax = ternary.figure(ax=ax, scale=scale)
 
     # Axis Labels (bottom corrisponds to x values, left corrisponds to y values)
-    tax.bottom_axis_label(labelNames[1], offset=-0.1, **font)
-    tax.left_axis_label(labelNames[2], offset=0.17, **font)
-    tax.right_axis_label(labelNames[0], offset=0.17, **font)
+    tax.bottom_axis_label(labelNames[0], position=(-0.1, 1.2, 0), rotation=0, **font)
+    tax.left_axis_label(labelNames[1], position=(1, 0.05, 0), rotation=0, **font)
+    tax.right_axis_label(labelNames[2], position=(-0.05, 0.05, 0), rotation=0, **font)
 
     # Plot data, boundary, gridlines, and ticks
-    tax.heatmap(d, style=style, cmap=cmap, cbarlabel=cbl, vmin=vmin, vmax=vmax, colorbar=cb)
+    tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, cb = False)
+
+    if cb:
+        cax = ax.imshow([[0]], vmin=vmin, vmax=vmax)
+    cbaxes = figure.add_axes([0.85, 0.2, 0.03, 0.7])  # [left, bottom, width, height] of colorbar
+    cbar = figure.colorbar(cax, ax=ax, cax=cbaxes)
+    cbar.set_label(cbl)
+
     tax.boundary(linewidth=1)
     tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
     ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
