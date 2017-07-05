@@ -13,7 +13,7 @@ from scripts.figure_plotters import ternary
 
 def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Species C'), scale=100,
                        sv=False, svpth=r"C:/Users/Travis W/Pictures/", svflnm='Unnamed',
-                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h'):
+                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h', show_ticks=True):
     """
     Overview
     ----------
@@ -34,6 +34,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     cmap: determines color map used
     cb: use colorbar if true
     style: h = hexagons, d = triangles for point shape
+    show_ticks: plot ticks on the ternary (no ticks if False)
 
     Returns
     -------
@@ -89,10 +90,14 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
         cax.set_position(pos2)
         cbar.set_label(cbl)
 
-    tax.boundary(linewidth=1)
-    tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
-    ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
-    tax.ticks(ticks=ticks, axis='rlb', linewidth=1, clockwise=False, offset=0.03, textsize=ticksize)
+    if show_ticks:
+        tax.boundary(linewidth=1)
+        tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
+        ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
+        tax.ticks(ticks=ticks, axis='rlb', linewidth=1, clockwise=False, offset=0.03, textsize=ticksize)
+    else:
+        tax.boundary(linewidth=1)
+        tax.gridlines(multiple=10, linewidth=lnwdth, alpha=0.50, linestyle=lnsty)
 
     # Set chart title
     tax.set_title(tertitle)
