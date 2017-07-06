@@ -97,12 +97,12 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
 
     if show_ticks:
         tax.boundary(linewidth=1)
-        tax.gridlines(multiple=10, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
-        ticks = [round(i / float(scale), 1) for i in range(0, scale+1, 10)]
+        tax.gridlines(multiple=25, linewidth=lnwdth, alpha=alpha, linestyle=lnsty)
+        ticks = [round(i / float(scale), 2) for i in range(0, scale+1, 25)]
         tax.ticks(ticks=ticks, axis='rlb', linewidth=1, clockwise=False, offset=0.03, textsize=ticksize)
     else:
         tax.boundary(linewidth=1)
-        tax.gridlines(multiple=10, linewidth=lnwdth, alpha=0.50, linestyle=lnsty)
+        tax.gridlines(multiple=25, linewidth=lnwdth, alpha=0.50, linestyle=lnsty)
 
     # Set chart title
     tax.set_title(tertitle)
@@ -131,7 +131,7 @@ def plt_tern_scatter(data, tertitle='',  labelNames=('Species A','Species B','Sp
     figure, tax = ternary.figure(scale=scale)
     tax.set_title(tertitle, fontsize=20)
     tax.boundary(linewidth=2.0)
-    tax.gridlines(multiple=10, color="k")
+    tax.gridlines(multiple=25, color="k")
 
     # Axis Labels (bottom corrisponds to x values, left corrisponds to y values)
     tax.bottom_axis_label(labelNames[1], offset=0, **font)
@@ -158,7 +158,7 @@ def plt_tern_scatter(data, tertitle='',  labelNames=('Species A','Species B','Sp
     # end wax MG stuff
 
     tax.scatter(points, marker='o', color=clrs, s=100)
-    tax.ticks(axis='lbr', linewidth=1, multiple=10, textsize=14)
+    tax.ticks(axis='lbr', linewidth=1, multiple=25, textsize=14)
 
     # Set chart title
     tax.set_title(tertitle)

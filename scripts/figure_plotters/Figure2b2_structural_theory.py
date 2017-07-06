@@ -83,4 +83,4 @@ ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
                              sv=True, svpth=save_path, svflnm= 'Figure2b2.png',
-                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h', show_ticks= False)
+                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')

@@ -72,4 +72,4 @@ ternary_data = np.concatenate(([Co_list], [V_list], [Zr_list], [label]), axis=0)
 ternary_data = np.concatenate((ternary_data, measured))
 plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
                              sv=True, svpth=save_path, svflnm= 'Figure2d.png',
-                             cbl='Scale', vmax = 1, vmin = 0, cmap='gray_r', cb=True, style='h', show_ticks= False)
+                             cbl='Scale', vmax = 1, vmin = 0, cmap='gray_r', cb=True, style='h')
