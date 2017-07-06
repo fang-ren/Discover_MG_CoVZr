@@ -58,6 +58,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     d = dict()
     x = data[:, 1]
     y = data[:, 0]
+
     if cb:
         i = data[:, 3]
 
