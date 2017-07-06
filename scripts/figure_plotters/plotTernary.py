@@ -112,6 +112,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     tax.clear_matplotlib_ticks()
     tax._redraw_labels()
     # plt.tight_layout()
+    plt.subplots_adjust(left=0.1, right=0.85, top=0.85, bottom=0.05)
 
     # Save or show
     if sv:
