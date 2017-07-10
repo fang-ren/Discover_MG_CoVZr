@@ -16,10 +16,15 @@ from scipy import interpolate
 import imp
 import os
 import pandas as pd
-from ternary_helper import interpolation_ternary, make_cmap, interpolate_probabilities
+import sys
+from ternary_helper import make_cmap, interpolate_probabilities
+
+sys.path.append(os.path.join('..','..'))
+from scripts.figure_plotters.plotTernary import plt_ternary_save as interpolation_ternary
+
 
 # Important variables to change
-path = os.path.join('..','3_with-CoVZr-data','plots')
+path = os.path.join('..','4_with-CoVZr-data','plots')
 save_path = os.path.join('..','..','figures')
 
 # Load in the ML results
@@ -35,5 +40,5 @@ probability = data['probability']
 # Interpolate probabilities
 ternary_data = interpolate_probabilities(Co, V, Zr, probability)
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure4c.png',
+                       sv=True, svpth=save_path, svflnm='/Figure4c.png',
                        cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
