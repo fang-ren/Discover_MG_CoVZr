@@ -89,7 +89,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, colorbar=False)
 
     if cb:
-        cdat = ax.imshow([[0]], vmin=vmin, vmax=vmax)
+        cdat = ax.imshow([[0]], cmap=cmap, vmin=vmin, vmax=vmax)
         cbar = figure.colorbar(cdat, ax=ax, cax=cax)
         pos1 = cax.get_position()
         pos2 = [pos1.x0 - 0.05, pos1.y0 + 0.1, pos1.width, pos1.height * 0.85]
