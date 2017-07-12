@@ -137,10 +137,10 @@ ternary_data = np.transpose(ternary_data)
 #                       cbl='Scale', vmax = 1.8, vmin = -1.2, cmap='viridis_r', cb=True, style='h')
 
 
-from plotTernary import plt_ternary_save
+from plotTernary_small import plt_ternary_save
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                       sv=True, svpth=path, svflnm='Figure2b1',
-                      cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')
+                      cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h', show_ticks= False)
 
 # np.savetxt(path+'thermodynamic.csv', ternary_data, delimiter=',')
 

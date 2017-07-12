@@ -7,7 +7,7 @@ author: Fang Ren (SSRL)
 
 import numpy as np
 import imp
-from plotTernary import plt_ternary_save
+from plotTernary_small import plt_ternary_save
 
 save_path = '..//..//figures//'
 
@@ -83,4 +83,4 @@ ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='', labelNames=('Co', 'V', 'Zr'), scale=100,
                              sv=True, svpth=save_path, svflnm= 'Figure2b2.png',
-                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')
+                             cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h', show_ticks= False)
