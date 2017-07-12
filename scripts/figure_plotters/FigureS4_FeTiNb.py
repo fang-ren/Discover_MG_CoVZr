@@ -55,7 +55,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='FigureS4a',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.5, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
 
 # ternary_data = np.concatenate(([Fe],[Ti],[Nb],[peak_position]), axis = 0)
 # ternary_data = np.transpose(ternary_data)
