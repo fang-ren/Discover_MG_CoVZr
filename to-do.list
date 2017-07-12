@@ -3,3 +3,4 @@ Logan's To-Do List:
 - Make ML-related (e.g., ML figure plotting scripts) Python 2 compatible
 - Move ML figures to "scripts/figure_plotters" directory
 - Add ML models to oqmd.org
+- Compute log losses vs Co-V-Zr and Fe-Nb-Ti data
