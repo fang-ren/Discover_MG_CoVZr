@@ -17,7 +17,8 @@ data attributes generate
 // Create a model using Weka, then test it
 model = new models.classification.WekaClassifier trees.RandomForest -I 400 -K 16 -num-slots 0
 model train $data
-model crossvalidate $data 10
+cv_data = model crossvalidate $data 10
+save cv_data cv_data stats
 
 // Print out training statistics
 print model validation stats
