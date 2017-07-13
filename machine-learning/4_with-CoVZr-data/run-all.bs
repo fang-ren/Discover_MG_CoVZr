@@ -1,13 +1,18 @@
 #! /bin/bash
+NPROCS=4
 
-# Generate results
-for dir in 0_ward-2016 1_with-theories 2_testing-adding-processing-method 3_with-processing-method 4_with-CoVZr-data; do
-	cd $dir
-	echo $dir
-	time ./run-all.bs
-	cd ..
-done
+# Make the model
+java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
 
-# Generate figures
-cd figures
-ls figure*.py | xargs -P 4 -n 1 python
+# Run the search
+java -jar ../magpie/dist/Magpie.jar -n $NPROCS run-search.in > run-search.out
+
+gzip --verbose --best new-glasses.json
+
+# Run against HiTp data
+java -jar ../magpie/dist/Magpie.jar run-HiTp-data.in > run-HiTp-data.out
+
+# Analyze the results
+python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1 > prediction-analysis.txt
+python ../py/plot_single_system.py new-glasses.json.gz Co V Zr
+python ../py/plot_single_system.py new-glasses.json.gz Fe Nb Ti
