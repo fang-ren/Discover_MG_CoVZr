@@ -13,7 +13,8 @@ from scripts.figure_plotters import ternary
 
 def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Species C'), scale=100,
                        sv=False, svpth=r"C:/Users/Travis W/Pictures/", svflnm='Unnamed',
-                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h', show_ticks=True):
+                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h', show_ticks=True,
+                       other_labels=[]):
     """
     Overview
     ----------
@@ -35,6 +36,7 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     cb: use colorbar if true
     style: h = hexagons, d = triangles for point shape
     show_ticks: plot ticks on the ternary (no ticks if False)
+    other_labels: list, where each entry is a tuple (x_pos, y_pos, text)
 
     Returns
     -------
@@ -104,6 +106,10 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     else:
         tax.boundary(linewidth=1)
         tax.gridlines(multiple=25, linewidth=lnwdth, alpha=0.50, linestyle=lnsty)
+        
+    # Add labels
+    for x_pos, y_pos, text in other_labels:
+        ax.text(x_pos, y_pos, text, ha='center', **font)
 
     # Set chart title
     tax.set_title(tertitle)
