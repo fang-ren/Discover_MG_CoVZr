@@ -45,6 +45,6 @@ with open(os.path.join('..','3_with-processing-method','run-HiTp-data.out')) as 
 # Interpolate probabilities
 ternary_data = interpolate_probabilities(Co, V, Zr, probability)
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='/Figure4b.png',
+                       sv=True, svpth=save_path, svflnm='/Figure4a.png',
                        cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h',
                        other_labels=[(50, -17.5, 'Log-loss: %.3f'%log_loss)])
