@@ -1,4 +1,5 @@
 # Author: Logan Ward
+from __future__ import print_function
 import json
 import pandas as pd
 import gzip
@@ -11,12 +12,15 @@ import numpy as np
 if len(sys.argv) != 4:
     print("Usage: <data file> <prob threshold> <dist threshold>")
     exit(1)
-data_file = sys.argv[1][:-5]
+data_file = sys.argv[1][:-8]
 prob_threshold = float(sys.argv[2])
 dist_threshold = float(sys.argv[3])
 
 # Read in the JSON file
-json_out = json.load(gzip.open(sys.argv[1], 'rt'))
+if sys.version_info >= (3,):
+    json_out = json.load(gzip.open(sys.argv[1], "rt"))
+else:
+    json_out = json.load(gzip.open(sys.argv[1]))
 entries = json_out['entries']
 dist_prop = [x['name'] for x in json_out['properties']].index('compdistance')
 am_class = json_out['class-names'].index('AM')
