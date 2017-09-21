@@ -19,7 +19,7 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = '..//..//data//master_data//'
+path = '..//..//data//FeTiNb//master_data//'
 save_path = '..//..//figures//'
 
 

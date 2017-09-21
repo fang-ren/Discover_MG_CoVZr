@@ -14,8 +14,8 @@ from scipy.optimize import curve_fit
 import imp
 import os.path
 
-peakdet = imp.load_source("peakdet", "peak_detection.py")
-    
+# peakdet = imp.load_source("peakdet", "peak_detection.py")
+#
 
 def func(x, *params):
     """
@@ -41,14 +41,44 @@ def file_index(index):
     elif len(str(index)) == 4:
         return str(index)
 
-path = '..//..//..//data//1D_spectra//background_subtracted//Sample15//'
-save_path = '..//..//..//data//1D_spectra//peak_fitted//Sample15//'
-base_name = 'Sample15_7thick_24x24_t30_'
+path = '..//..//..//data//CoTiZr//1D_spectra//background_subtracted//'
+save_path = '..//..//..//data//CoTiZr//1D_spectra//peak_fitted//'
+base_name = 'SampleB2_6_24x24_t30_'
 
-# parameters for 21
-guess = [2.8, 5000, 0.33, 0.5, 3.7, 23, 0.15, 0.5]
-high = [3.4, 10000, 1, 1, 3.9, 200, 0.2, 1]
-low = [2.1, 0, 0, 0, 3.7, 10, 0.1, 0]
+
+# # parameters for CoFeZr
+# guess = [2.05, 25, 0.233, 0.5,
+#          3.1, 5000, 0.33, 0.5,
+#          3.5, 23, 0.15, 0.5]
+#
+# high = [2.1, 30, 0.3, 1,
+#         3.4, 10000, 1, 1,
+#         3.55, 30, 0.2, 1]
+#
+# low = [2.0, 20, 0.1, 0,
+#        2.1, 0, 0, 0,
+#        3.45, 10, 0.1, 0]
+
+# parameters for CoTiZr
+guess = [2.0, 25, 0.233, 0.5,
+         2.6, 5000, 0.33, 0.5,
+         3.5, 37, 0.15, 0.5]
+
+high = [2.1, 40, 0.3, 1,
+        3.5, 10000, 1, 1,
+        3.55, 40, 0.4, 1]
+
+low = [1.95, 20, 0.1, 0,
+       2.1, 50, 0, 0,
+       3.45, 10, 0.1, 0]
+
+
+
+
+# # parameters for 21
+# guess = [2.8, 5000, 0.33, 0.5, 3.7, 23, 0.15, 0.5]
+# high = [3.4, 10000, 1, 1, 3.9, 200, 0.2, 1]
+# low = [2.1, 0, 0, 0, 3.7, 10, 0.1, 0]
 
 # # parameters for 19, 20
 # guess = [3.9, 100, 0.3, 0.5, 2.8, 5000, 0.33, 0.5]
