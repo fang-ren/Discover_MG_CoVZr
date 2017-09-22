@@ -16,7 +16,7 @@ import scipy
 from scipy import interpolate
 from plotTernary import plt_ternary_save
 
-path = '..//..//data//master_data//'
+path = '..//..//data//FeTiNb//master_data//'
 save_path = '..//..//figures//'
 
 
@@ -102,12 +102,14 @@ print peak_width_new.max(), peak_width_new.min()
 
 labels = []
 for pw in peak_width_new:
-    if pw < 0.16:
-        label = 0
-    elif pw > 0.57:
+    # if pw < 0.16:
+    #     label = 0
+    if pw < 0.57:
+         label = 0
+    elif pw >= 0.57:
         label = 1
-    else:
-        label = 0.5
+    # else:
+    #     label = 0.5
     labels.append(label)
 
 

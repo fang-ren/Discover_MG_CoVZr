@@ -148,7 +148,7 @@ ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Fe','Ti','Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='FigureS4b',
-                       cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []

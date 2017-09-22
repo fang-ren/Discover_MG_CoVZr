@@ -20,7 +20,7 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = '..//..//data//master_data//'
+path = '..//..//data//CoVZr//master_data//'
 save_path = '..//..//figures//'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
@@ -50,15 +50,15 @@ ternary_data = np.concatenate(([Co],[V],[Zr],[peak_width]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS3b',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='FigureS3b_FWHM_CoVZr',
+                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
-ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS3a',
-                       cbl='Peak position', vmin = 2.49, vmax = 3.15, cmap='viridis', cb=True, style='h')
+# ternary_data = np.concatenate(([Co],[V],[Zr],[peak_position]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='FigureS3a',
+#                        cbl='Peak position', vmin = 2.49, vmax = 3.15, cmap='viridis', cb=True, style='h')
 
 
 # ternary_data = np.concatenate(([Co],[V],[Zr],[[1]*len(Co)]), axis = 0)
@@ -128,8 +128,8 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FigureS3c',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='FigureS3c_FWHM_interpolated_CoVZr',
+                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
 
 labels = []

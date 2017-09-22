@@ -20,7 +20,7 @@ from plotTernary import plt_ternary_save
 
 
 path = '..//..//data//CoTiZr//master_data//'
-save_path = path
+save_path =  '..//..//figures//'
 
 
 basename1 = 'CLEANED_SampleB2_4_24x24_t30_master_metadata.csv'
@@ -52,21 +52,21 @@ num_of_peaks = data[:,70]
 
 peak_width_neighborhood = np.copy(peak_width)
 
-
-ternary_data = np.concatenate(([Co],[Ti],[Zr],[peak_width]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FWHM',
-                       cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
-
-
-ternary_data = np.concatenate(([Co],[Ti],[Zr],[num_of_peaks]), axis = 0)
-ternary_data = np.transpose(ternary_data)
-
-plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='num_of_peaks',
-                       cbl='num_of_peaks', vmin = 1, vmax = 2, cmap='viridis', cb=True, style='h')
+#
+# ternary_data = np.concatenate(([Co],[Ti],[Zr],[peak_width]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='FWHM_CoTiZr',
+#                        cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
+#
+#
+# ternary_data = np.concatenate(([Co],[Ti],[Zr],[num_of_peaks]), axis = 0)
+# ternary_data = np.transpose(ternary_data)
+#
+# plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
+#                        sv=True, svpth=save_path, svflnm='num_of_peaks_CoTiZr',
+#                        cbl='num_of_peaks', vmin = 1, vmax = 2, cmap='viridis', cb=True, style='h')
 
 #
 #
@@ -141,8 +141,9 @@ for i in range(len(Co)):
 # interpolation
 peak_width_func = interpolate.Rbf(Co, Zr, Ti, peak_width_neighborhood, function='multiquadric', smooth=0.3)
 
-Co_range = np.arange(5.8, 84.7, 1)
-Zr_range = np.arange(7.3, 78.9, 1)
+Co_range = np.arange(min(Co), max(Co), 1)
+Zr_range = np.arange(min(Zr), max(Zr), 1)
+
 
 
 Co_new = []
@@ -176,19 +177,21 @@ ternary_data = np.concatenate(([Co_new],[Ti_new],[Zr_new],[peak_width_new]), axi
 ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='FWHM_interpolated',
-                       cbl='FWHM', vmin = 0.05, vmax = 0.48, cmap='viridis_r', cb=True, style='h')
+                       sv=True, svpth=save_path, svflnm='FWHM_interpolated_CoTiZr',
+                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
 
 
 labels = []
 for pw in peak_width_new:
-    if pw < 0.16:
-        label = 0
-    elif pw > 0.57:
+    # if pw < 0.16:
+    #     label = 0
+    if pw < 0.57:
+         label = 0
+    elif pw >= 0.57:
         label = 1
-    else:
-        label = 0.5
+    # else:
+    #     label = 0.5
     labels.append(label)
 
 
@@ -196,7 +199,7 @@ ternary_data = np.concatenate(([Co_new],[Ti_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='GFA',
+                       sv=True, svpth=save_path, svflnm='GFA_CoTiZr',
                        cbl='Scale', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 

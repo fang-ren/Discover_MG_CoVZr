@@ -20,7 +20,7 @@ from scipy import interpolate
 plotTernary = imp.load_source("plt_ternary_save", "plotTernary.py")
 
 
-path = '..//..//data//master_data//'
+path = '..//..//data//CoVZr//master_data//'
 save_path = '..//..//figures//'
 
 basename1 = 'CLEANED_Sample9_master_metadata_low.csv'
@@ -100,23 +100,25 @@ peak_width_new = np.array(peak_width_new)
 print peak_width.max(), peak_width.min()
 print peak_width_new.max(), peak_width_new.min()
 
-#
+
 # ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
 # ternary_data = np.transpose(ternary_data)
 #
 # plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-#                        sv=True, svpth=save_path, svflnm='Figure3b',
+#                        sv=True, svpth=save_path, svflnm='Figure3b_FWHM_interpolated_CoVZr',
 #                        cbl='FWHM', vmin = 0.341, vmax = 0.964, cmap='viridis_r', cb=True, style='h')
-
+#
 
 labels = []
 for pw in peak_width_new:
-    if pw < 0.16:
-        label = 0
-    elif pw > 0.57:
+    # if pw < 0.16:
+    #     label = 0
+    if pw < 0.57:
+         label = 0
+    elif pw >= 0.57:
         label = 1
-    else:
-        label = 0.5
+    # else:
+    #     label = 0.5
     labels.append(label)
 
 
@@ -124,7 +126,7 @@ ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[labels]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
 plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='Figure3b',
+                       sv=True, svpth=save_path, svflnm='Figure3b_GFA_CoVZr',
                        cbl='Glass forming', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 
