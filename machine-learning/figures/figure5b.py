@@ -35,8 +35,17 @@ Nb = data['X_Nb']*100
 Ti = data['X_Ti']*100
 probability = data['probability']
 
+# Load in the log loss
+with open(os.path.join('..','4_with-CoVZr-data','run-HiTp-data.out')) as fp:
+    # Get the lines with "log-loss" data
+    data_lines = [ x for x in fp if 'Log-loss' in x ]
+
+    # The first is CoVZr, second is FeNbTi
+    log_loss = float(data_lines[1].split()[-1])
+
 # Interpolate probabilities
-ternary_data = interpolate_probabilities(Fe, Nb, Ti, probability)
-interpolation_ternary(ternary_data, tertitle='',  labelNames=('Fe', 'Nb', 'Ti'), scale=100,
+ternary_data = interpolate_probabilities(Fe, Ti, Nb, probability)
+interpolation_ternary(ternary_data, tertitle='',  labelNames=('Fe', 'Ti', 'Nb'), scale=100,
                        sv=True, svpth=save_path, svflnm='/Figure5b.png',
-                       cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
+                       cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h',
+                       other_labels=[(50, -17.5, 'Log-loss: %.3f'%log_loss)])

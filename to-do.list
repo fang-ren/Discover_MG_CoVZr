@@ -1,5 +1,4 @@
 Logan's To-Do List:
 - Read datasets for ML from the data directory. (i.e., do not duplicate sputtering data in ML directory)
-- Make ML-related (e.g., ML figure plotting scripts) Python 2 compatible
 - Move ML figures to "scripts/figure_plotters" directory
 - Add ML models to oqmd.org

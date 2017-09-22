@@ -33,9 +33,19 @@ V = data['X_V']*100
 Zr = data['X_Zr']*100
 probability = data['probability']
 
-
 # Interpolate probabilities
 ternary_data = interpolate_probabilities(Co, V, Zr, probability)
+
+# Load in the log loss
+with open(os.path.join('..','0_ward-2016','run-HiTp-data.out')) as fp:
+    # Get the lines with "log-loss" data
+    data_lines = [ x for x in fp if 'Log-loss' in x ]
+
+    # The first is CoVZr, second is FeNbTi
+    log_loss = float(data_lines[0].split()[-1])
+
+# Render ternary plot
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='\Figure2a.png',
-                       cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h')
+                       cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h',
+                       other_labels=[(50, -17.5, 'Log-loss: %.3f'%log_loss)])

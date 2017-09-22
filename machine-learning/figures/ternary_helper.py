@@ -71,5 +71,5 @@ def make_cmap(base='viridis_r', scale_factor=1.5, cutoff=0.9, adjust_factor=0.1)
     new_list = v(np.linspace(0,1,300) ** scale_factor)
 
     # Apply cutoff
-    new_list[:int(len(new_list)*cutoff),:3] += (1 - new_list[:int(len(new_list)*0.9),:3]) * adjust_factor
+    new_list[:int(len(new_list)*cutoff),:3] += (1 - new_list[:int(len(new_list)*cutoff),:3]) * adjust_factor
     return ListedColormap(new_list, name='%s_scaled'%base)

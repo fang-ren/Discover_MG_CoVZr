@@ -13,8 +13,7 @@ from scripts.figure_plotters import ternary
 
 def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Species C'), scale=100,
                        sv=False, svpth=r"C:/Users/Travis W/Pictures/", svflnm='Unnamed',
-                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h', show_ticks=True,
-                       other_labels=[]):
+                       cbl='Scale', vmin=None, vmax=None, cmap='viridis', cb=True, style='h', show_ticks=True):
     """
     Overview
     ----------
@@ -36,14 +35,13 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     cb: use colorbar if true
     style: h = hexagons, d = triangles for point shape
     show_ticks: plot ticks on the ternary (no ticks if False)
-    other_labels: list, where each entry is a tuple (x_pos, y_pos, text)
 
     Returns
     -------
 
     """
     if sv:
-        font = {'size': 12}   # Set font size for **kwargs
+        font = {'size': 24}   # Set font size for **kwargs
         figsize = (4, 3)
         ticksize = 6
         lnwdth = 0.5
@@ -84,17 +82,17 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
         tax.right_axis_label(labelNames[2], position=(-0.08, 0.00, 0), rotation=0, **font)
     else:
         tax.bottom_axis_label(labelNames[0], position=(-0.07, 1.13, 0), rotation=0, **font)
-        tax.left_axis_label(labelNames[1], position=(0.96, 0.05, 0.00), rotation=0, **font)
-        tax.right_axis_label(labelNames[2], position=(-0.01, 0.05, 0), rotation=0, **font)
+        tax.left_axis_label(labelNames[1], position=(1.01, 0.0, 0.00), rotation=0, **font)
+        tax.right_axis_label(labelNames[2], position=(-0.02, 0.0, 0), rotation=0, **font)
 
     # Plot data, boundary, gridlines, and ticks
     tax.heatmap(d, style=style, cmap=cmap, vmin=vmin, vmax=vmax, colorbar=False)
 
     if cb:
-        cdat = ax.imshow([[0]], cmap=cmap, vmin=vmin, vmax=vmax)
+        cdat = ax.imshow([[0]], vmin=vmin, vmax=vmax)
         cbar = figure.colorbar(cdat, ax=ax, cax=cax)
         pos1 = cax.get_position()
-        pos2 = [pos1.x0 - 0.05, pos1.y0 + 0.1, pos1.width, pos1.height * 0.85]
+        pos2 = [pos1.x0 + 0.5, pos1.y0 + 0.1, pos1.width, pos1.height * 0.85]
         cax.set_position(pos2)
         cbar.set_label(cbl)
 
@@ -106,10 +104,6 @@ def plt_ternary_save(data, tertitle='',  labelNames=('Species A','Species B','Sp
     else:
         tax.boundary(linewidth=1)
         tax.gridlines(multiple=25, linewidth=lnwdth, alpha=0.50, linestyle=lnsty)
-        
-    # Add labels
-    for x_pos, y_pos, text in other_labels:
-        ax.text(x_pos, y_pos, text, ha='center', **font)
 
     # Set chart title
     tax.set_title(tertitle)
