@@ -133,20 +133,24 @@ plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Z
 plt.close('all')
 
 
-# labels = []
-# for pw in peak_width:
-#     if pw < 0.16:
-#         label = 0
-#     elif pw > 0.57:
-#         label = 1
-#     else:
-#         label = 0.5
-#     labels.append(label)
-#
-#
-# save_path_2 = 'C:\\Research_FangRen\\Data\\July2016\\CoVZr_ternary\\Theory\\'
-# data = np.concatenate(([Co], [V], [Zr], [peak_width], [labels]))
-# np.savetxt(save_path_2+'peak_width_low.csv', data.T, delimiter=',')
+
+labels_measured = []
+for pw in peak_width:
+    if pw < 0.16:
+        label = 0
+    elif pw > 0.57:
+        label = 1
+    else:
+        label = 0.5
+    labels_measured.append(label)
+
+labels_measured = np.array(labels_measured)
+
+save_path2 = '..//..//machine-learning//datasets//new-data//'
+
+print Co.shape, V.shape, Zr.shape, labels_measured.shape
+data = np.concatenate(([Co], [V], [Zr],  [labels_measured]))
+np.savetxt(save_path2+'GFA_CoVZr.csv', data.T, header = 'Co, V, Zr, is_glass', delimiter=',', fmt='%1.3f', comments='')
 
 
 print peak_position.max(), peak_position.min()

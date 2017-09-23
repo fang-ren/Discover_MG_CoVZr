@@ -203,3 +203,22 @@ plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=
                        cbl='Scale', vmax = 1, vmin = 0.1, cmap='viridis_r', cb=True, style='h')
 
 
+
+labels_measured = []
+for pw in peak_width:
+    if pw < 0.16:
+        label = 0
+    elif pw > 0.57:
+        label = 1
+    else:
+        label = 0.5
+    labels_measured.append(label)
+
+labels_measured = np.array(labels_measured)
+
+save_path2 = '..//..//machine-learning//datasets//new-data//'
+
+
+data = np.concatenate(([Co], [Ti], [Zr],  [labels_measured]))
+np.savetxt(save_path2+'GFA_CoTiZr.csv', data.T, header = 'Co, Ti, Zr, is_glass', delimiter=',', fmt='%1.3f', comments='')
+

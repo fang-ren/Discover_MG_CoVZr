@@ -163,22 +163,5 @@ for pw in peak_width_new:
 
 plt.close('all')
 
-
-# labels = []
-# for pw in peak_width:
-#     if pw < 0.16:
-#         label = 0
-#     elif pw > 0.57:
-#         label = 1
-#     else:
-#         label = 0.5
-#     labels.append(label)
-#
-#
-# save_path_2 = 'C:\\Research_FangRen\\Data\\July2016\\FeNbTi_ternary\\Theory\\'
-# data = np.concatenate(([Fe], [Nb], [Ti], [peak_width], [labels]))
-# np.savetxt(save_path_2+'peak_width_low.csv', data.T, delimiter=',')
-
-
 print peak_position.max(), peak_position.min()
 print peak_width.max(), peak_width.min()
