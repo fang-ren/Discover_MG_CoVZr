@@ -10,7 +10,7 @@ java -jar ../magpie/dist/Magpie.jar -n $NPROCS run-search.in > run-search.out
 gzip --verbose --best new-glasses.json
 
 # Run against HiTp data
-java -jar ../magpie/dist/Magpie.jar run-HiTp-data.in > run-HiTp-data.out
+java -jar ../magpie/dist/Magpie.jar ../0_ward-2016/run-HiTp-data.in > run-HiTp-data.out
 
 # Analyze the results
 python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1 > prediction-analysis.txt

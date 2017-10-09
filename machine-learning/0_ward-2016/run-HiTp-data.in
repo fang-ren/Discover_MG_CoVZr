@@ -5,21 +5,36 @@ data = load gfa-data.obj
 // Run the model on the HiTpData
 
 // Co-V-Zr
-data import ..\datasets\new-data\sputtering_CoVZr.data
+data import ../datasets/new-data/sputtering_CoVZr.data
 data target gfa
 
 data attributes generate
 model validate $data
 print model validation stats
-save data hitp-CoVZr-data stats
 
 // Fe-Nb-Ti
-data import ..\datasets\new-data\sputtering_FeTiNb.data
+data import ../datasets/new-data/sputtering_FeTiNb.data
 data target gfa
 
 data attributes generate
 model validate $data
 print model validation stats
-save data hitp-FeNbTi-data stats
+
+// Fe-Nb-Ti
+data import ../datasets/new-data/sputtering_CoFeZr.data
+data target gfa
+
+data attributes generate
+model validate $data
+print model validation stats
+
+// Fe-Nb-Ti
+data import ../datasets/new-data/sputtering_CoTiZr.data
+data target gfa
+
+data attributes generate
+model validate $data
+print model validation stats
+
 
 exit

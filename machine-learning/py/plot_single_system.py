@@ -158,6 +158,9 @@ fig, ax = plt.subplots()
 plot_ternary(ax, data, data['probability'])#, train_data=training_data)
 prettify(ax, '')
 
+if not os.path.isdir('plots'):
+    os.mkdir('plots')
+
 fig = plt.gcf()
 fig.set_size_inches(plotWidth, plotHeight)
 plt.tight_layout()
