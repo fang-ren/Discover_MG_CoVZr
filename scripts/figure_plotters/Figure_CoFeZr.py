@@ -166,7 +166,7 @@ ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Fe','Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='FWHM_interpolated_CoFeZr',
-                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.2, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
 
 

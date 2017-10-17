@@ -58,7 +58,7 @@ peak_width_neighborhood = np.copy(peak_width)
 #
 # plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
 #                        sv=True, svpth=save_path, svflnm='FWHM_CoTiZr',
-#                        cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
+#                        cbl='FWHM', vmin = 0.2, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 #
 #
 # ternary_data = np.concatenate(([Co],[Ti],[Zr],[num_of_peaks]), axis = 0)
@@ -178,7 +178,7 @@ ternary_data = np.transpose(ternary_data)
 
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','Ti','Zr'), scale=100,
                        sv=True, svpth=save_path, svflnm='FWHM_interpolated_CoTiZr',
-                       cbl='FWHM', vmin = 0.05, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
+                       cbl='FWHM', vmin = 0.2, vmax = 0.57, cmap='viridis_r', cb=True, style='h')
 
 
 
