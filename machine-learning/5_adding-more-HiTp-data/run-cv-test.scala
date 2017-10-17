@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._;
 
 // Variables to change
 val templatePath = "2_with-processing-method";
-val newSystems = Seq[Seq[String]](Seq("Co","V","Zr"), Seq("Fe","Ti","Nb"), Seq("Co","Fe","Zr"), Seq("Co","Ti","Zr"))
+val newSystems = Seq[Seq[String]](Seq("Co","V","Zr"), Seq("Co","Ti","Zr"), Seq("Co","Fe","Zr"), Seq("Fe","Ti","Nb"))
 
 // Load in the LB set
 val data = UtilityOperations.loadState(s"../${templatePath}/gfa-sputtering_training-data.obj").asInstanceOf[Dataset];

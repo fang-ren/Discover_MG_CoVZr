@@ -1,0 +1,7 @@
+#! /bin/bash
+
+if [ ! -d results ]; then
+    mkdir results
+fi
+scala -cp ../magpie/dist/Magpie.jar run-cv-test.scala > run-cv-test.out
+jupyter nbconvert --execute --ExecuteProprocessor.timeout=-1 --inplace compare-models.ipynb
