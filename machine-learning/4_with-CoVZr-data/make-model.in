@@ -60,8 +60,8 @@ val_data = model_sp crossvalidate $sp_data 10
 print model_sp validation stats
 
 // Save the model and dataset
-save model_sp gfa-sputtering_model
-save sp_data gfa-sputtering_data template 
-save data gfa-sputtering_training-data 
+save model_sp gfa-model
+save sp_data gfa-data template 
+save data gfa-training_data 
 
 exit

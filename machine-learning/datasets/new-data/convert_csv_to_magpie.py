@@ -20,7 +20,7 @@ def parse_file(filename):
 
     # Save it in Magpie format
     with open('sputtering_%s.data'%''.join(elems), 'w') as fp:
-        print('composition', 'gfa{AM,CR}', 'processing{melting,sputtering}', file=fp)
+        print('composition', 'gfa{AM,CR}', 'processing{meltspin,sputtering}', file=fp)
 
         for rid,row in data.iterrows():
             print(row['composition'], row['is_glass_label'], 'sputtering', file=fp)

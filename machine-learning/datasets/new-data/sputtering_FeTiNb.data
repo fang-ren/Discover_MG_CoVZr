@@ -1,4 +1,4 @@
-composition gfa{AM,CR} processing{melting,sputtering}
+composition gfa{AM,CR} processing{meltspin,sputtering}
 Fe18.199000Ti34.026000Nb47.775000 CR sputtering
 Fe19.707000Ti40.768000Nb39.526000 CR sputtering
 Fe19.894000Ti38.911000Nb41.196000 CR sputtering

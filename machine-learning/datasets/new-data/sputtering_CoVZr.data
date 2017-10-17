@@ -1,4 +1,4 @@
-composition gfa{AM,CR} processing{melting,sputtering}
+composition gfa{AM,CR} processing{meltspin,sputtering}
 Co22.400000V46.900000Zr30.600000 CR sputtering
 Co22.300000V45.500000Zr32.200000 AM sputtering
 Co22.100000V44.100000Zr33.800000 AM sputtering
