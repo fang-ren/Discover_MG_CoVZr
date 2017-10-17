@@ -1,11 +1,11 @@
 #! /bin/bash
-NPROCS=4
+NPROCS=10
 
 # Make the model
 java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
 
 # Run the search
-java -jar ../magpie/dist/Magpie.jar -n $NPROCS run-search.in > run-search.out
+java -jar ../magpie/dist/Magpie.jar -n $NPROCS ../0_ward-2016/run-search.in > run-search.out
 
 gzip --verbose --best new-glasses.json
 
