@@ -46,6 +46,6 @@ with open(os.path.join('..','0_ward-2016','run-HiTp-data.out')) as fp:
 
 # Render ternary plot
 interpolation_ternary(ternary_data, tertitle='',  labelNames=('Co', 'V', 'Zr'), scale=100,
-                       sv=True, svpth=save_path, svflnm='\Figure2a.png',
+                       sv=True, svpth=save_path, svflnm='/Figure2b_CoVZr-ward-2016.png',
                        cbl='Likelihood (GFA = True)', vmin = 0.5, vmax = 1, cmap=make_cmap(), cb=True, style='h',
                        other_labels=[(50, -17.5, 'Log-loss: %.3f'%log_loss)])
