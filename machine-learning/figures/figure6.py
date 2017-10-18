@@ -24,7 +24,7 @@ new_path = os.path.join('..','4_with-CoVZr-data','plots')
 save_path = os.path.join('..','..','figures','figure6')
 
 for gen,path in enumerate([old_path, new_path]):
-    for order,tern in enumerate([['Co', 'V', 'Zr'], ['Fe','Nb','Ti'],['Co','Fe','Zr'],['Co','Ti','Zr']]):
+    for order,tern in enumerate([['Co', 'V', 'Zr'], ['Fe','Ti','Nb'],['Co','Fe','Zr'],['Co','Ti','Zr']]):
         name = ''.join(tern)
         # Load in the ML results
         filename_new = os.path.join(path, '%s.csv'%name)

@@ -20,7 +20,7 @@ data attributes generate
 model validate $data
 print model validation stats
 
-// Fe-Nb-Ti
+// Co-Fe-Zr
 data import ../datasets/new-data/sputtering_CoFeZr.data
 data target gfa
 
@@ -28,7 +28,7 @@ data attributes generate
 model validate $data
 print model validation stats
 
-// Fe-Nb-Ti
+// Co-Ti-Zr
 data import ../datasets/new-data/sputtering_CoTiZr.data
 data target gfa
 

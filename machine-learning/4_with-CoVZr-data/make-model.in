@@ -9,6 +9,7 @@ data modify ClassEliminationModifier AC CR
 //   Add in the new data
 new_data = data clone -empty
 new_data import ../datasets/new-data/sputtering_CoVZr.data
+new_data = new_data subset 100
 data add $new_data
 
 // Remove duplicates
