@@ -55,6 +55,6 @@ print model_sp validation stats
 // Save the model and dataset
 save model_sp gfa-model
 save sp_data gfa-data template 
-save data gfa-sputtering_training-data
+save data gfa-training-data
 
 exit

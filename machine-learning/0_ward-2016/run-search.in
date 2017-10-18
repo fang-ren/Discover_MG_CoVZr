@@ -3,8 +3,7 @@ data = load gfa-data.obj
 model = load gfa-model.obj
 
 // Load the compositions of all metallic glasses in the training set
-am = new data.materials.CompositionDataset
-am import ../datasets/landolt.txt
+am = load gfa-training-data.obj
 am target gfa
 //    Get only the amorphous entries
 am filter include ClassFilter measured = 0

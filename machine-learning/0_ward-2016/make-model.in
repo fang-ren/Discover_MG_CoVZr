@@ -29,4 +29,5 @@ save model gfa-model
 
 // Save data template
 save data gfa-data template
+save data gfa-training-data
 exit
