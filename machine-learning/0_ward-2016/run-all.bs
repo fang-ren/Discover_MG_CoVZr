@@ -12,6 +12,10 @@ gzip --force --verbose --best new-glasses.json
 # Run against HiTp data
 java -jar ../magpie/dist/Magpie.jar run-HiTp-data.in > run-HiTp-data.out
 
+# Run grouping test
+scala -cp ../magpie/dist/Magpie.jar run-grouping-test.scala > run-grouping-test.out
+jupyter nbconvert --execute --inplace cv-grouping-test.ipynb
+
 # Analyze the results
 python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1 > prediction-analysis.txt
 python analyze_cv_results.py > cv-analysis.txt
