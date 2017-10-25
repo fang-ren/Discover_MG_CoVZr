@@ -10,17 +10,17 @@ import magpie.utility.UtilityOperations;
 import scala.collection.JavaConversions._;
 
 // Variables to change
-val templatePath = "2_with-processing-method";
+val templatePath = "3_with-theories";
 val newSystems = Seq[Seq[String]](Seq("Co","V","Zr"), Seq("Co","Ti","Zr"), Seq("Co","Fe","Zr"), Seq("Fe","Ti","Nb"))
 
 // Load in the LB set
-val data = UtilityOperations.loadState(s"../${templatePath}/gfa-sputtering_training-data.obj").asInstanceOf[Dataset];
+val data = UtilityOperations.loadState(s"../${templatePath}/gfa-training-data.obj").asInstanceOf[Dataset];
 
 // Add in the other data
 for (sys <- newSystems) {
     var temp = data.emptyClone();
     temp.importText(s"../datasets/new-data/sputtering_${sys.mkString("")}.data", null);
-    temp = temp.getRandomSubset(100);
+    temp = temp.getRandomSubset(70);
     data.combine(temp);
 }
 data.generateAttributes();
