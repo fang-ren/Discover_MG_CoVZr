@@ -17,8 +17,6 @@ agen run $data
 data duplicates RankingDuplicateResolver minimize PropertyRanker gfa SimpleEntryRanker
 
 // Add new attribute generators
-data attributes generators add composition.APEAttributeGenerator 0.01 -neighbors 1 3 5
-data attributes generators add composition.YangOmegaAttributeGenerator
 data attributes generators add PropertyAsAttributeGenerator processing
 
 // Generate new attributes
