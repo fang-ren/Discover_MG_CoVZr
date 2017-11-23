@@ -24,6 +24,7 @@ for (sys <- newSystems) {
     data.combine(temp);
 }
 data.generateAttributes();
+data.saveState("all-training-data.obj");
 
 // Split data and test data into sputtering and meltspinng
 val filter = new PropertyFilter()
