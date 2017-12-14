@@ -1,5 +1,6 @@
 # Author: Logan Ward
 from __future__ import print_function
+from collections import OrderedDict
 import json
 import pandas as pd
 import gzip
@@ -40,29 +41,29 @@ data['elems'] = data['composition'].apply(lambda x: elem_regex.findall(x))
 
 # Group by each system, get the name and number above prob and dist thresholds
 data['system'] = data['elems'].apply(lambda x: "-".join(sorted(x)))
-system = []
-nelems = []
-above_prob = []
-above_dist = []
-above_both = []
-number_evals = []
+systems = []
 for gid, group in data.groupby('system'):
-    system.append(gid)
-    number_evals.append(len(group))
-    nelems.append(gid.count("-") + 1)
-    above_prob.append(len(group.query('probability >= %f'%prob_threshold)))
-    above_dist.append(len(group.query('distance >= %f'%dist_threshold)))
-    above_both.append(len(group.query('distance >= %f and probability >= %f'%(dist_threshold, prob_threshold))))
+    number_evals = len(group)
+    above_prob = len(group.query('probability >= %f'%prob_threshold))
+    above_dist = len(group.query('distance >= %f'%dist_threshold))
+    above_both = len(group.query('distance >= %f and probability >= %f'%(dist_threshold, prob_threshold)))
+    best_gfl = group['probability'].max()
+    best_gfl_composition = group['composition'][group['probability'].idxmax()]
+    systems.append(OrderedDict(
+        system=gid,
+        nelems=gid.count("-") + 1,
+        number_alloys=number_evals,
+        fraction_glassy=float(above_prob) / number_evals,
+        predicted_glassy=above_prob,
+        unexplored=above_dist,
+        unexplored_glassy=above_both,
+        highest_GFL=best_gfl,
+        highest_GFL_composition=best_gfl_composition
+    ))
+    
 
 # Make into data frame, sort by above both, and save
-output = pd.DataFrame()
-output['system'] = system
-output['nelems'] = nelems
-output['number_alloys'] = number_evals
-output['fraction_glassy'] = [ x / y for x,y in zip(above_prob, number_evals) ]
-output['predicted_glassy'] = np.array(above_prob, np.float)
-output['unexplored'] = np.array(above_dist, np.float)
-output['unexplored_glassy'] = np.array(above_both, np.float)
+output = pd.DataFrame(systems)
 
 # Save the ternary systems
 output.sort_values(by='unexplored_glassy', ascending=False, inplace=True)
