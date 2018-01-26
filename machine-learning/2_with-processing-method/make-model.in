@@ -52,6 +52,12 @@ model_sp train $sp_data
 val_data = model_sp crossvalidate $sp_data 10
 print model_sp validation stats
 
+// Run attribute selection
+rf_sel = new attributes.selectors.RandomForestAttributeSelector -num_attr 20 -num_trees 200
+dedup_sel = new attributes.selectors.RemoveCorrelatedAttributeSelector -useclass -kendall 0.9
+sel = new attributes.selectors.StagedAttributeSelector $dedup_sel $rf_sel
+sel train $sp_data
+
 // Save the model and dataset
 save model_sp gfa-model
 save sp_data gfa-data template 

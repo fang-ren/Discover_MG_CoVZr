@@ -30,4 +30,11 @@ save model gfa-model
 // Save data template
 save data gfa-data template
 save data gfa-training-data
+
+// Perform attribute selection
+rf_sel = new attributes.selectors.RandomForestAttributeSelector -num_attr 20 -num_trees 200
+dedup_sel = new attributes.selectors.RemoveCorrelatedAttributeSelector -useclass -kendall 0.9
+sel = new attributes.selectors.StagedAttributeSelector $dedup_sel $rf_sel
+sel train $data
+
 exit
