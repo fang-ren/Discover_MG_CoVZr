@@ -13,6 +13,7 @@ gzip --force --verbose --best new-glasses.json
 java -jar ../magpie/dist/Magpie.jar run-HiTp-data.in > run-HiTp-data.out
 
 # Run grouping test
+mkdir -p results
 scala -cp ../magpie/dist/Magpie.jar run-grouping-test.scala > run-grouping-test.out
 jupyter nbconvert --execute --inplace cv-grouping-test.ipynb
 
