@@ -1,7 +1,27 @@
 #! /bin/bash
+NPROCS=4
 
+# Run the cross-validation test
 if [ ! -d results ]; then
     mkdir results
 fi
 scala -cp ../magpie/dist/Magpie.jar run-cv-test.scala > run-cv-test.out
 jupyter nbconvert --execute --ExecuteProprocessor.timeout=-1 --inplace compare-models.ipynb
+
+# Make the model
+java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
+
+# Run the search
+java -jar ../magpie/dist/Magpie.jar -n $NPROCS ../0_ward-2016/run-search.in > run-search.out
+
+gzip --force --verbose --best new-glasses.json
+
+# Run against HiTp data
+java -jar ../magpie/dist/Magpie.jar ../0_ward-2016/run-HiTp-data.in > run-HiTp-data.out
+
+# Analyze the results
+python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1 > prediction-analysis.txt
+python ../py/plot_single_system.py new-glasses.json.gz Co V Zr
+python ../py/plot_single_system.py new-glasses.json.gz Fe Ti Nb
+python ../py/plot_single_system.py new-glasses.json.gz Co Fe Zr
+python ../py/plot_single_system.py new-glasses.json.gz Co Ti Zr

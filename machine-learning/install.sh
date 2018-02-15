@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Get Python packages
-pip -r requirements.txt
+pip -r ../requirements.txt
 
 # Get 
 cd magpie
