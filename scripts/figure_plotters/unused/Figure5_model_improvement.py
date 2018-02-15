@@ -109,7 +109,7 @@ probability_interpolate_old = np.array(probability_interpolate_old)
 ternary_data = np.concatenate(([metal1],[metal2],[metal3],[probability_interpolate_new-probability_interpolate_old]), axis = 0)
 ternary_data = np.transpose(ternary_data)
 
-print np.max(probability_interpolate_new-probability_interpolate_old), np.min(probability_interpolate_new-probability_interpolate_old)
+print(np.max(probability_interpolate_new-probability_interpolate_old), np.min(probability_interpolate_new-probability_interpolate_old))
 plotTernary_cb = imp.load_source("plt_ternary_save", "plotTernary_cb.py")
 plotTernary_cb.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:2], alloy[2:4], alloy[4:6]), scale=100,
                        sv=True, svpth=save_path, svflnm='Figure5e.png',
@@ -142,4 +142,4 @@ plotTernary_cb.plt_ternary_save(ternary_data, tertitle='',  labelNames=(alloy[0:
 
 plt.close("all")
 
-print np.mean(probability_new), np.mean(probability_old)
+print(np.mean(probability_new), np.mean(probability_old))

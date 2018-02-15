@@ -25,7 +25,7 @@ def twoD_visualize(path):
     """
     for filename in glob.glob(os.path.join(path, '*.csv')):
         # if basename(filename)[0] == 'P':
-            print basename(filename)
+            print(basename(filename))
             data = np.genfromtxt(filename, delimiter=',', skip_header = 1)
             plate_x = data[:,1]
             plate_y = data[:,2]

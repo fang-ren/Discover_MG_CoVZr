@@ -130,8 +130,8 @@ peak_width_new = np.array(peak_width_new)
 # print Co_new.max(), V_new.max(), Zr_new.max()
 # print Co_new.min(), V_new.min(), Zr_new.min()
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 

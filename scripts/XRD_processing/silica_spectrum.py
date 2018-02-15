@@ -46,4 +46,4 @@ plt.xlabel('Q')
 plt.ylabel('Intensity')
 plt.legend()
 
-print popt
+print(popt)

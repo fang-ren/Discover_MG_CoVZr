@@ -68,7 +68,7 @@ index = 2
 total_num_scan = 441
 while (index <= total_num_scan):
     file_name = os.path.join(path, basename + file_index(index) + '_1D.csv')
-    print 'processing', file_name
+    print('processing', file_name)
     spectrum = np.genfromtxt(file_name, delimiter= ',')
     intensity_original = spectrum[:, 1][30:-100]
     Q_original =  spectrum[:, 0][30:-100]

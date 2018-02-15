@@ -50,13 +50,13 @@ indices2 = [74, 73, 92, 112, 133, 132,154, 176, 198]
 indices2.reverse()
 
 for index in indices1:
-    print 'importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header=0)
     plt.plot(spectrum[:, 0], spectrum[:, 1])
 
 for index in indices2:
-    print 'importing', basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
     plt.plot(spectrum[:,0],spectrum[:,1])
@@ -82,13 +82,13 @@ indices2 = [119, 142, 189]
 
 
 for index in indices2:
-    print 'importing', basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path2 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
     plt.plot(spectrum[:,0],spectrum[:,1])
 
 for index in indices1:
-    print 'importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header=0)
     plt.plot(spectrum[:, 0], spectrum[:, 1])
@@ -120,14 +120,14 @@ indices3.reverse()
 plt.figure(1, figsize = (4, 6))
 
 for index in indices1:
-    print 'importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path1 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header=0)
     plt.plot(spectrum[:, 0], spectrum[:, 1])
 
 
 for index in indices3:
-    print 'importing', basefile_path3 + file_index(index) + 'bckgrd_subtracted.csv'
+    print('importing', basefile_path3 + file_index(index) + 'bckgrd_subtracted.csv')
     file_name = basefile_path3 + file_index(index) + 'bckgrd_subtracted.csv'
     spectrum = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
     plt.plot(spectrum[:,0],spectrum[:,1])

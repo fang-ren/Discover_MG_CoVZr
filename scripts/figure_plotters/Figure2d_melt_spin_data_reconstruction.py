@@ -5,7 +5,7 @@ author: fangren
 
 import numpy as np
 import imp
-from plotTernary import plt_ternary_save
+from .plotTernary import plt_ternary_save
 
 save_path = '..//..//figures//'
 
@@ -33,9 +33,9 @@ measured = np.reshape(meltspin_data, (len(meltspin_data)/3, 3))
 
 #print measured
 measured_label = np.ones((len(meltspin_data)/3, 1))
-print measured_label.shape, measured.shape
+print(measured_label.shape, measured.shape)
 measured = np.concatenate((measured, measured_label), axis = 1)
-print measured.shape
+print(measured.shape)
 
 binary = [[93, 0, 7, 1], [92, 0, 8, 1], [91, 0, 9, 1], [90, 0, 10, 1], [89, 0, 11, 1], [88, 0, 12, 1], [22, 0, 78, 1], [30, 0, 70, 1],
           [36, 0, 64, 1], [53, 0, 47, 1]]

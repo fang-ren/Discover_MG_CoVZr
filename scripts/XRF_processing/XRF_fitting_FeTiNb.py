@@ -84,7 +84,7 @@ if not os.path.exists(save_path):
     os.makedirs(save_path)
 
 data = np.genfromtxt(filename, delimiter=' ')
-x = np.array(range(data.shape[1]))
+x = np.array(list(range(data.shape[1])))
 
 
 # # visualize a few XRF spectra for defining peak positions.
@@ -132,7 +132,7 @@ low = [460, 0, 0,
 
 # fitting starts from here
 for i in range(1, data.shape[0]):
-    print i
+    print(i)
     intensity = data[i]
     try:
         popt, pcov = curve_fit(func, x, intensity, p0=guess, bounds = (low, high))
@@ -203,13 +203,13 @@ for i in range(1, data.shape[0]):
         plt.plot(x, curve10)
 
         plt.xlim(380, 1000)
-        print 'saving', save_path + base_filename[:-13] + str(i) + '_XRF_fit'
+        print('saving', save_path + base_filename[:-13] + str(i) + '_XRF_fit')
         plt.savefig(save_path + base_filename[:-13] + str(i) + '_XRF_fit')
         plt.close()
         result = [[amp1, amp2, amp3, amp4, amp5, amp6, amp7, amp8, amp9, amp10], [ctr1, ctr2, ctr3, ctr4, ctr5, ctr6, ctr7, ctr8, ctr9, ctr10], [wid1, wid2, wid3, wid4, wid5, wid6, wid7, wid8, wid9, wid10]]
         np.savetxt(save_path + base_filename[:-13] + str(i) + '_XRF_fit.csv', result, delimiter=",")
     except RuntimeError:
-        print "Failed to fit", i+1
-        print "used the previous peak information"
+        print("Failed to fit", i+1)
+        print("used the previous peak information")
         np.savetxt(save_path + base_filename[:-13] + str(i) + '_XRF_fit.csv', result, delimiter=",")
 

@@ -150,7 +150,7 @@ def plt_tern_scatter(data, tertitle='',  labelNames=('Species A','Species B','Sp
     # for WAXS MG stuff
 
     color = data[:, 3]
-    print(color.shape)
+    print((color.shape))
     clrs = list()
 
     for i, col in enumerate(color):

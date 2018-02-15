@@ -7,7 +7,7 @@ author: Fang Ren (SSRL)
 
 import numpy as np
 import imp
-from plotTernary import plt_ternary_save
+from .plotTernary import plt_ternary_save
 
 save_path = '..//..//figures//'
 
@@ -47,7 +47,7 @@ plus1 = line(0.071, 0.476, 0.557, 0.36)
 negative1 = line(0.071, 0.419, 0.638, 0.279)
 
 ideal = line(0.071, 0.453, 0.5975, 0.3345)
-print ideal
+print(ideal)
 
 Zr_corner = line(0, 0.82, 0.19, 0.81)
 Co_corner = line(0, 0.18, 0.34, 0)

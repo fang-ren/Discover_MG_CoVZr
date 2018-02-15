@@ -26,7 +26,7 @@ def twoD_visualize(path):
     """
     for filename in glob.glob(os.path.join(path, '*.csv')):
         if basename(filename)[0] == 'C':
-            print basename(filename)
+            print(basename(filename))
             data = np.genfromtxt(filename, delimiter=',', skip_header = 1)
             Co_model = data[:,57]*100
             V_model = data[:,58]*100

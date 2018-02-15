@@ -24,7 +24,7 @@ Fe_alpha = []
 Fe_beta = []
 
 while (index <= total_num_scan):
-    print 'processing', basefile_path + str(index) + '_XRF_fit.csv'
+    print('processing', basefile_path + str(index) + '_XRF_fit.csv')
     file_name = basefile_path + str(index) + '_XRF_fit.csv'
     XRF_info = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
     Ti_alpha.append(XRF_info[0][0])
@@ -34,7 +34,7 @@ while (index <= total_num_scan):
     index += 1
 
 XRF_channels = np.concatenate(([Ti_alpha], [Ti_beta], [Fe_alpha], [Fe_beta]), axis = 0)
-print XRF_channels.T.shape
+print(XRF_channels.T.shape)
 
 
 header_string = 'Ti_alpha,Ti_beta,Fe_alpha,Fe_beta'

@@ -48,7 +48,7 @@ for i in range(len(Fe)):
 # for i in range(1):
     alloy = ChemicalSystem()
     spectrum_file = spectra_file_path + spectra_basename + file_index(scan_num[i]) + '_1D.csv'
-    print 'Importing', spectrum_file
+    print('Importing', spectrum_file)
     spectrum = np.genfromtxt(spectrum_file, delimiter=',')
     IntAve = spectrum[:950,1]
     Qlist = spectrum[:950,0]

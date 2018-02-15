@@ -16,7 +16,7 @@ import scipy
 from scipy import interpolate
 
 
-from plotTernary import plt_ternary_save
+from .plotTernary import plt_ternary_save
 
 
 path = '..//..//data//CoFeZr//master_data//'
@@ -157,8 +157,8 @@ Zr_new = np.array(Zr_new)
 Fe_new = np.array(Fe_new)
 peak_width_new = np.array(peak_width_new)
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 ternary_data = np.concatenate(([Co_new],[Fe_new],[Zr_new],[peak_width_new]), axis = 0)

@@ -115,7 +115,7 @@ def boundary(ax, scale, axes_colors=None, **kwargs):
     if axes_colors is None:
         axes_colors = dict()
     for _axis in ['l', 'r', 'b']:
-        if _axis not in axes_colors.keys():
+        if _axis not in list(axes_colors.keys()):
             axes_colors[_axis] = 'black'
 
     horizontal_line(ax, scale, 0, color=axes_colors['b'], **kwargs)

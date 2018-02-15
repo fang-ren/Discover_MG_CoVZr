@@ -139,8 +139,8 @@ Nb_new = np.array(Nb_new)
 Ti_new = np.array(Ti_new)
 peak_width_new = np.array(peak_width_new)
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 ternary_data = np.concatenate(([Fe_new],[Ti_new],[Nb_new],[peak_width_new]), axis = 0)
@@ -163,5 +163,5 @@ for pw in peak_width_new:
 
 plt.close('all')
 
-print peak_position.max(), peak_position.min()
-print peak_width.max(), peak_width.min()
+print(peak_position.max(), peak_position.min())
+print(peak_width.max(), peak_width.min())

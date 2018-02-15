@@ -14,7 +14,7 @@ from os.path import basename
 import imp
 import scipy
 from scipy import interpolate
-from plotTernary import plt_ternary_save
+from .plotTernary import plt_ternary_save
 
 path = '..//..//data//FeTiNb//master_data//'
 save_path = '..//..//figures//'
@@ -95,8 +95,8 @@ Nb_new = np.array(Nb_new)
 Ti_new = np.array(Ti_new)
 peak_width_new = np.array(peak_width_new)
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 
@@ -142,5 +142,5 @@ data = np.concatenate(([Fe], [Ti], [Nb],  [labels_measured]))
 np.savetxt(save_path2+'GFA_FeTiNb.csv', data.T, header = 'Fe, Ti, Nb, is_glass', delimiter=',', fmt='%1.3f', comments='')
 
 
-print peak_position.max(), peak_position.min()
-print peak_width.max(), peak_width.min()
+print(peak_position.max(), peak_position.min())
+print(peak_width.max(), peak_width.min())

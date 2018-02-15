@@ -120,8 +120,8 @@ V_new = np.array(V_new)
 Zr_new = np.array(Zr_new)
 peak_width_new = np.array(peak_width_new)
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 ternary_data = np.concatenate(([Co_new],[V_new],[Zr_new],[peak_width_new]), axis = 0)
@@ -158,5 +158,5 @@ for pw in peak_width_new:
 # np.savetxt(save_path_2+'peak_width_low.csv', data.T, delimiter=',')
 
 
-print peak_position.max(), peak_position.min()
-print peak_width.max(), peak_width.min()
+print(peak_position.max(), peak_position.min())
+print(peak_width.max(), peak_width.min())

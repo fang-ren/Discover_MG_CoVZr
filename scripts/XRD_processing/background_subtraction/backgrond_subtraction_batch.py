@@ -34,14 +34,14 @@ def read_1D(filename):
 def select_bckgrd(background_indices):
     background_x = Qlist[background_indices]
     background_y = IntAve[background_indices]
-    print background_y[5]
+    print(background_y[5])
     if background_y[5] >820:
         background_y[5] = 820
     
     return background_x, background_y
 
 def save_results(background_x, background_y, Qlist, IntAve, index, base_filename):
-    indices = range(1, 930)
+    indices = list(range(1, 930))
     plt.figure(1)
     plt.subplot(311)
     plt.plot(indices, IntAve)
@@ -83,7 +83,7 @@ if not os.path.exists(save_path):
 index = 1
 basefile_path = folder_path + base_filename
 while (index <= 440):
-    print 'processing', basefile_path + file_index(index) + '_1D.csv'
+    print('processing', basefile_path + file_index(index) + '_1D.csv')
     filename = basefile_path + file_index(index) + '_1D.csv'
     Qlist, IntAve = read_1D(filename)
     background_x, background_y = select_bckgrd(background_indices)

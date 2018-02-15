@@ -24,7 +24,7 @@ save_path = path
 
 for filename in glob.glob(os.path.join(path, '*.csv')):
     if basename(filename)[0] == 'W':
-        print basename(filename)
+        print(basename(filename))
         data = np.genfromtxt(filename, delimiter=',', skip_header = 1)
         plate_x_177 = data[:,4]
         plate_y_177 = data[:,5]
@@ -32,7 +32,7 @@ for filename in glob.glob(os.path.join(path, '*.csv')):
         V_177 = data[:,2]
         Zr_177 = data[:,1]
     elif basename(filename)[0] == '4':
-        print basename(filename)
+        print(basename(filename))
         data = np.genfromtxt(filename, delimiter=',', skip_header=1)
         plate_x_441 = data[:, 0]
         plate_y_441 = data[:, 1]

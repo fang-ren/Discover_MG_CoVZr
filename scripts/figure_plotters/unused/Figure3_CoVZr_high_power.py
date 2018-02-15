@@ -117,8 +117,8 @@ peak_width_new = np.array(peak_width_new)
 # print Co_new.max(), V_new.max(), Zr_new.max()
 # print Co_new.min(), V_new.min(), Zr_new.min()
 
-print peak_width.max(), peak_width.min()
-print peak_width_new.max(), peak_width_new.min()
+print(peak_width.max(), peak_width.min())
+print(peak_width_new.max(), peak_width_new.min())
 
 
 
@@ -168,5 +168,5 @@ plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Z
 # np.savetxt(save_path_2+'peak_width_high.csv', data.T, delimiter=',')
 
 
-print peak_position.max(), peak_position.min()
-print peak_width.max(), peak_width.min()
+print(peak_position.max(), peak_position.min())
+print(peak_width.max(), peak_width.min())

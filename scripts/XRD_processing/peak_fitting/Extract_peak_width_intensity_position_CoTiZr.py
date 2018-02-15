@@ -31,10 +31,10 @@ def read_data(total_num_scan, index, basefile_paths):
     num_of_peaks = []
     for basefile_path in basefile_paths:
         while (index <= total_num_scan):
-            print 'processing', basefile_path + file_index(index) + '_bckgrd_subtracted_peak_analysis_GLS.csv'
+            print('processing', basefile_path + file_index(index) + '_bckgrd_subtracted_peak_analysis_GLS.csv')
             file_name = basefile_path + file_index(index) + '_bckgrd_subtracted_peak_analysis_GLS.csv'
             peak_info = np.genfromtxt(file_name, delimiter=',', skip_header = 0)
-            print peak_info
+            print(peak_info)
             try:
                 peak_position.append(peak_info[2][0])
                 peak_intensity.append(peak_info[2][1])

@@ -281,7 +281,7 @@ class TernaryAxesSubplot(object):
             mpl_object.remove()
         self._to_remove = []
         # Redraw the labels with the appropriate angles
-        for (label, position, rotation, kwargs) in self._labels.values():
+        for (label, position, rotation, kwargs) in list(self._labels.values()):
             transform = ax.transAxes
             x, y = project_point(position)
             # Calculate the new angle.

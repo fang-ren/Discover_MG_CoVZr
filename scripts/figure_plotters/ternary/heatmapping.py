@@ -141,7 +141,7 @@ def polygon_generator(data, scale, style, permutation=None):
     project = functools.partial(project_point, permutation=permutation)
 
     if isinstance(data, dict):
-        data_gen = data.items()
+        data_gen = list(data.items())
     else:
         # Only works with style == 'h'
         data_gen = data
@@ -154,28 +154,28 @@ def polygon_generator(data, scale, style, permutation=None):
         k = scale - i - j
         if style == 'h':
             vertices = hexagon_coordinates(i, j, k)
-            yield (map(project, vertices), value)
+            yield (list(map(project, vertices)), value)
         elif style == 'd':
             # Upright triangles
             if (i <= scale) and (j <= scale) and (k >= 0):
                 vertices = triangle_coordinates(i, j, k)
-                yield (map(project, vertices), value)
+                yield (list(map(project, vertices)), value)
             # Upside-down triangles
             if (i < scale) and (j < scale) and (k >= 1):
                 vertices = alt_triangle_coordinates(i, j, k)
                 value = blend_value(data, i, j, k)
-                yield (map(project, vertices), value)
+                yield (list(map(project, vertices)), value)
         elif style == 't':
             # Upright triangles
             if (i < scale) and (j < scale) and (k > 0):
                 vertices = triangle_coordinates(i, j, k)
                 value = blend_value(data, i, j, k)
-                yield (map(project, vertices), value)
+                yield (list(map(project, vertices)), value)
             # If not on the boundary add the upside-down triangle
             if (i < scale) and (j < scale) and (k > 1):
                 vertices = alt_triangle_coordinates(i, j, k)
                 value = alt_blend_value(data, i, j, k)
-                yield (map(project, vertices), value)
+                yield (list(map(project, vertices)), value)
 
 def heatmap(data, scale, vmin=None, vmax=None, cmap=None, ax=None,
             scientific=False, style='triangular', colorbar=True,
@@ -217,7 +217,7 @@ def heatmap(data, scale, vmin=None, vmax=None, cmap=None, ax=None,
     # If not colormap, then make the RGBA values numpy arrays so that they can
     # be averaged.
     if not colormap:
-        for k, v in data.items():
+        for k, v in list(data.items()):
             data[k] = numpy.array(v)
     else:
         cmap = get_cmap(cmap)

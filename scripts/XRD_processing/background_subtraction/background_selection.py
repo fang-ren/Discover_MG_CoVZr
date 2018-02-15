@@ -26,7 +26,7 @@ def read_1D(filename):
 
 Qlist, IntAve = read_1D(fullname)
 
-x = range(0,929)
+x = list(range(0,929))
 
 background_x = Qlist[background_indices]
 background_y = IntAve[background_indices]

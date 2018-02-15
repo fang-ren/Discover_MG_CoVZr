@@ -27,7 +27,7 @@ index = 1
 total_num_scan = 441
 while (index <= total_num_scan):
     source = os.path.join(source_folder, basename + file_index(index) + '_1D.csv')
-    print 'copying', source
+    print('copying', source)
     destination = os.path.join(destination_folder, basename + file_index(index) + '_1D.csv')
     copyfile(source, destination)
     index += 1

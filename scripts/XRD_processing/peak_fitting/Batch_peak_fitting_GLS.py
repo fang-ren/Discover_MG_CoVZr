@@ -88,7 +88,7 @@ low = [1.95, 20, 0.1, 0,
 
 for index in np.arange(1, 442):
     filename = os.path.join(path, base_name + file_index(index) + '_bckgrd_subtracted.csv')
-    print 'processing', filename
+    print('processing', filename)
     data = np.genfromtxt(filename, delimiter = ',' )
     Qlist = data[:,0][:647]
     IntAve = data[:,1][:647]
@@ -127,8 +127,8 @@ for index in np.arange(1, 442):
         np.savetxt(save_path + basename(filename)[:-4] + '_peak_analysis_GLS.csv', popt, delimiter=",")
 
     except RuntimeError:
-        print "Failed to fit", filename
-        print "used the previous peak information"
+        print("Failed to fit", filename)
+        print("used the previous peak information")
         np.savetxt(save_path + basename(filename)[:-4] + '_peak_analysis_GLS.csv', popt, delimiter=",")
             
     index += 1

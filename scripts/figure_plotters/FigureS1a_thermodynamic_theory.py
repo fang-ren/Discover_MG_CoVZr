@@ -137,7 +137,7 @@ ternary_data = np.transpose(ternary_data)
 #                       cbl='Scale', vmax = 1.8, vmin = -1.2, cmap='viridis_r', cb=True, style='h')
 
 
-from plotTernary import plt_ternary_save
+from .plotTernary import plt_ternary_save
 plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Zr'), scale=100,
                       sv=True, svpth=path, svflnm='FigureS1a',
                       cbl='Glass formation', vmax = 1, vmin = 0, cmap='viridis_r', cb=True, style='h')

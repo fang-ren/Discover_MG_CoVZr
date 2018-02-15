@@ -62,9 +62,9 @@ for i in range(len(scan_num)):
         scan_chosen.append(scan_num[i])
         indices.append(i)
 
-scan_chosen = map(int, scan_chosen)
-print scan_chosen
+scan_chosen = list(map(int, scan_chosen))
+print(scan_chosen)
 
 
-print Zr[indices]
+print(Zr[indices])
 

@@ -147,6 +147,6 @@ plotTernary.plt_ternary_save(ternary_data, tertitle='',  labelNames=('Co','V','Z
                        sv=True, svpth=save_path, svflnm='Figure3e',
                        cbl='FWHM(low-power) - FWHM(high-power)', vmax = 0.27, vmin = 0, cmap='viridis', cb=True, style='h')
 
-print peak_width_new_high.max(), peak_width_new_high.min()
-print peak_width_new_low.max(), peak_width_new_low.min()
-print width_difference.max(), width_difference.min()
+print(peak_width_new_high.max(), peak_width_new_high.min())
+print(peak_width_new_low.max(), peak_width_new_low.min())
+print(width_difference.max(), width_difference.min())

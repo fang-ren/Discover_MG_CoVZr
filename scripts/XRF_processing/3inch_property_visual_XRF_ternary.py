@@ -26,7 +26,7 @@ def twoD_visualize(path):
     """
     for filename in glob.glob(os.path.join(path, '*.csv')):
         if basename(filename)[0] == 'P':
-            print basename(filename)
+            print(basename(filename))
             data = np.genfromtxt(filename, delimiter=',', skip_header = 1)
             ROI1 = data[:,15]
             ROI2 = data[:,16]
