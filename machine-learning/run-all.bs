@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # Generate results
-for dir in 0_ward-2016 1_with-theories 2_testing-adding-processing-method 3_with-processing-method 4_with-CoVZr-data; do
-	cd $dir
-	echo $dir
+for dir in `seq 0 6`; do
+	cd ${dir}_*
+	pwd
 	time ./run-all.bs
 	cd ..
 done
