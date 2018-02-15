@@ -1,5 +1,5 @@
 #! /bin/bash
-NPROCS=10
+NPROCS=4
 
 # Make the model
 java -jar ../magpie/dist/Magpie.jar make-model.in > make-model.out
