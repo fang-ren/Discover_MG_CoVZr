@@ -13,8 +13,9 @@ gzip --force --verbose --best new-glasses.json
 java -jar ../magpie/dist/Magpie.jar ../0_ward-2016/run-HiTp-data.in > run-HiTp-data.out
 
 # Run grouping test
+mkdir -p results
 scala -cp ../magpie/dist/Magpie.jar run-grouping-test.scala > run-grouping-test.out
-jupyter nbconvert --execute --inplace compare-grouping-test.ipynb
+jupyter nbconvert --execute --inplace compare-grouping-tests.ipynb
 
 # Analyze the results
 python ../py/rank_systems.py new-glasses.json.gz 0.95 0.1 > prediction-analysis.txt
