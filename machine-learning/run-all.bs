@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Generate results
-for dir in `seq 0 6`; do
+for dir in `seq 0 5`; do
 	cd ${dir}_*
 	pwd
 	time ./run-all.bs
