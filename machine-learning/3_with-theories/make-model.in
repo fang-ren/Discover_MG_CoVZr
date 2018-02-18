@@ -58,7 +58,7 @@ print model_sp validation stats
 rf_sel = new attributes.selectors.RandomForestAttributeSelector -num_attr 20 -num_trees 200
 dedup_sel = new attributes.selectors.RemoveCorrelatedAttributeSelector -useclass -kendall 0.9
 sel = new attributes.selectors.StagedAttributeSelector $dedup_sel $rf_sel
-rf_sel train $sp_data
+sel train $sp_data
 
 // Save the model and dataset
 save model_sp gfa-model
