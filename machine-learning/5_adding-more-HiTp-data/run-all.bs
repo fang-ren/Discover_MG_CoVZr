@@ -1,5 +1,5 @@
 #! /bin/bash
-NPROCS=4
+NPROCS=`grep -c ^processor /proc/cpuinfo`
 
 # Run the cross-validation test
 if [ ! -d results ]; then
