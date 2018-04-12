@@ -6,6 +6,28 @@ data import ../datasets/landolt-combined.txt
 data target gfa
 data modify ClassEliminationModifier AC CR
 
+//   Add in the new data
+new_data = data clone -empty
+new_data import ../datasets/new-data/sputtering_CoVZr.data
+new_data = new_data subset 70
+data add $new_data
+
+new_data = data clone -empty
+new_data import ../datasets/new-data/sputtering_CoFeZr.data
+new_data = new_data subset 70
+data add $new_data
+
+new_data = data clone -empty
+new_data import ../datasets/new-data/sputtering_CoTiZr.data
+new_data = new_data subset 70
+data add $new_data
+
+new_data = data clone -empty
+new_data import ../datasets/new-data/sputtering_FeTiNb.data
+new_data = new_data subset 70
+data add $new_data
+
+
 // Remove duplicates
 //  In this case, entries with the same composition 
 //    and different "processing" are not duplicates.
@@ -53,12 +75,6 @@ sp_data filter exclude PropertyFilter measured processing == 0
 model_sp train $sp_data
 val_data = model_sp crossvalidate $sp_data 10
 print model_sp validation stats
-
-// Run attribute selection
-rf_sel = new attributes.selectors.RandomForestAttributeSelector -num_attr 20 -num_trees 200
-dedup_sel = new attributes.selectors.RemoveCorrelatedAttributeSelector -useclass -kendall 0.9
-sel = new attributes.selectors.StagedAttributeSelector $dedup_sel $rf_sel
-sel train $sp_data
 
 // Save the model and dataset
 save model_sp gfa-model
