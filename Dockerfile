@@ -14,6 +14,9 @@ ADD --chown=jovyan:users . /home/$NB_USER/work
 WORKDIR /home/$NB_USER/work/machine-learning
 RUN ./install.sh && \
     find magpie -name "build" -type d | xargs rm -r
+    
+# Change the default mpl backend
+RUN mkdir -p ~/.config/matplotlib && echo "backend : Agg" > ~/.config/matplotlib/matplotlibrc
 
 # Fix the permissions
 RUN fix-permissions /home/$NB_USER 
